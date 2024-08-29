@@ -3,10 +3,11 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Fruitables - Vegetable Website Template</title>
+        <title>Casa EDLIN</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
-        <meta content="" name="description">
+        <meta content="Ferramentas Manuais, Ferramentas Elétricas, Gastronomia, Utilidades, Material Hidráulico e Elétrico, Jardinagem" name="keywords">
+        <meta content="Onde a especialidade é a variedade!" name="description">
+        <link rel="shortcut icon" href="/layout_site/img/icone.ico" type="image/x-icon">
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,12 +28,14 @@
 
         <!-- Template Stylesheet -->
         <link href="/layout_site/css/style.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     </head>
 
     <body>
 
         <!-- Spinner Start -->
-        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div id="spinner" class="show w-100 vh-100 bg-dark-blue position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status"></div>
         </div>
         <!-- Spinner End -->
@@ -43,47 +46,52 @@
             <div class="container topbar bg-primary d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="top-info ps-2">
-                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">123 Street, New York</a></small>
-                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>
-                    </div>
-                    <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Avenida Coronel Clementino Gonçalves, 521, Santa Cruz do Rio Pardo - SP</a></small>
+                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">casaedlin@casaedlin.com.br</a></small>
                     </div>
                 </div>
             </div>
             <div class="container px-0">
-                <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">FRUTAVEIS</h1></a>
+                <nav class="navbar navbar-light bg-dark-blue navbar-expand-xl">
+                    <a href="home" class="navbar-brand"><img width="80px" height="80px" src="/layout_site/img/logobranca.svg"></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
-                    <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                    <div class="collapse navbar-collapse bg-dark-blue" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="/" class="nav-item nav-link active">BANER</a>
-                            <a href="produtos" class="nav-item nav-link">PRODUTOS</a>
-                            <a href="shop-detail.html" class="nav-item nav-link">SHOPPING</a>
+                            <a href="/" class="nav-item nav-link active">Home</a>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Produtos</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="cart.html" class="dropdown-item">Cart</a>
-                                    <a href="chackout.html" class="dropdown-item">Chackout</a>
-                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="404.html" class="dropdown-item">404 Page</a>
+                                    <a href="automotivo" class="dropdown-item">Automotivo</a>
+                                    <a href="eletrica" class="dropdown-item">Material Elétrico</a>
+                                    <a href="ferragens" class="dropdown-item">Ferragens</a>
+                                    <a href="ferramentasEletricas" class="dropdown-item">Ferramentas Elétricas</a>
+                                    <a href="ferramentasManuais" class="dropdown-item">Ferramentas Manuais</a>
+                                    <a href="gastronomia" class="dropdown-item">Gastronomia</a>
+                                    <a href="hidraulica" class="dropdown-item">Hidraúlica</a>
+                                    <a href="jardinagem" class="dropdown-item">Jardinagem / Agrícola</a>
+                                    <a href="lazer" class="dropdown-item">Lazer</a>
+                                    <a href="marcenaria" class="dropdown-item">Marcenaria</a>
+                                    <a href="parafusos" class="dropdown-item">Parafusos</a>
+                                    <a href="seguranca" class="dropdown-item">Segurança e Acessórios</a>
+                                    <a href="tintas" class="dropdown-item">Tintas e Acessórios</a>
+                                    <a href="utilidades" class="dropdown-item">Utilidades Domésticas</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="quemSomos" class="nav-item nav-link">Quem Somos</a>
+                            <a href="contato" class="nav-item nav-link">Contato</a>
                         </div>
                         <div class="d-flex m-3 me-0">
-                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
-                            <input></input>
-                            <a href="#" class="position-relative me-4 my-auto">
+                            <input class="me-4" placeholder="Busque um produto" style="border-radius: 10px; border-width: 0; min-width: 330px;"></input>
+                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-dark-blue me-4"><i class="fas fa-search text-primary"></i></button>
+                            <a href="carrinho" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
                             </a>
-                            <a href="#" class="my-auto">
+                            <a href="perfil" class="my-auto">
                                 <i class="fas fa-user fa-2x"></i>
+                            </a>
                         </div>
                     </div>
                 </nav>
