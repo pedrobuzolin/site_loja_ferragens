@@ -74,6 +74,12 @@
     color: var(--bs-white) !important;
 }
 
+/*** Carrosel ***/
+
+.carrossel{
+    top: 150px;
+}
+
 /*** Topbar Start ***/
 .fixed-top {
     transition: 0.5s;
@@ -225,7 +231,7 @@
     background-size: cover;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) {  
     .hero-header,
     .page-header {
         margin-top: 152px !important;
@@ -233,6 +239,10 @@
 }
 
 @media (max-width: 992px) {
+    .carrossel{
+        top: 100px;
+    }
+    
     .hero-header,
     .page-header {
         margin-top: 97px !important;
@@ -277,6 +287,10 @@
 
 
 /*** Fruits Start ***/
+.produtos{
+    margin-top: 80px;
+}
+
 .fruite .tab-class .nav-item a.active {
     background: var(--bs-secondary) !important;
 }
