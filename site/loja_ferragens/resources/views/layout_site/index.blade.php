@@ -49,6 +49,7 @@
                     <div class="top-info ps-2">
                         <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Avenida Coronel Clementino Gonçalves, 521, Santa Cruz do Rio Pardo - SP</a></small>
                         <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">casaedlin@casaedlin.com.br</a></small>
+                        <small class="me-3"><i class="fab fa-whatsapp me-2 text-secondary"></i><a href="#" class="text-white">(14) 99835-4236</a></small>
                     </div>
                 </div>
             </div>
@@ -84,11 +85,13 @@
                             <a href="contato" class="nav-item nav-link">Contato</a>
                         </div>
                         <div class="d-flex m-3 me-0">
-                            <input class="me-4" placeholder="Busque um produto" style="border-radius: 10px; border-width: 0; min-width: 330px;"></input>
-                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-dark-blue me-4"><i class="fas fa-search text-primary"></i></button>
+                            <input class="me-4 input-pesquisa" placeholder="Busque um produto"></input>
+                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-dark-blue me-4"><i class="fas fa-search text-white"></i></button>    
+                        </div>
+                        <div class="d-flex  m-3 me-0">
                             <a href="carrinho" class="position-relative me-4 my-auto">
-                                <i class="fa fa-shopping-bag fa-2x"></i>
-                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                                <i class="fas fa-shopping-cart fa-2x"></i>
+                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -8px; left: 25px; height: 20px; min-width: 20px;">3</span>
                             </a>
                             <a href="perfil" class="my-auto">
                                 <i class="fas fa-user fa-2x"></i>
