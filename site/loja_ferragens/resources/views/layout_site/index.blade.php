@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
     <head>
         <meta charset="utf-8">
@@ -93,7 +93,7 @@
                                 <i class="fas fa-shopping-cart fa-2x"></i>
                                 <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -8px; left: 25px; height: 20px; min-width: 20px;">3</span>
                             </a>
-                            <a href="perfil" class="my-auto">
+                            <a href="login" class="my-auto">
                                 <i class="fas fa-user fa-2x"></i>
                             </a>
                         </div>
