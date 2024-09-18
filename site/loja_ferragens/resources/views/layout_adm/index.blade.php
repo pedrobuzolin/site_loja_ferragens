@@ -33,11 +33,19 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+              <a class="sidebar-link" href="produtos" aria-expanded="false">
                 <span>
                     <iconify-icon icon="icon-park-outline:ad-product" class="fs-6"></iconify-icon>
                 </span>
                 <span class="hide-menu">Produtos</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="secoes" aria-expanded="false">
+                <span>
+                    <iconify-icon icon="icon-park-outline:ad-product" class="fs-6"></iconify-icon>
+                </span>
+                <span class="hide-menu">Seções</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -116,8 +124,6 @@
             @yield("conteudo")
         </div>
       </div>
-    </div>
-  </div>
   <script src="/layout_adm/libs/jquery/dist/jquery.min.js"></script>
   <script src="/layout_adm/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/layout_adm/libs/apexcharts/dist/apexcharts.min.js"></script>
