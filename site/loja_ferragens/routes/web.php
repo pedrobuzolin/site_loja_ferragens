@@ -17,5 +17,6 @@ Route::get('/adm', function(){
 });
 
 Route::get('/produtos', [ProdutoController::class, 'index']);
+Route::get('/produtos/novo', [ProdutoController::class, 'inserir']);
 
 // FIM ROTAS ADM

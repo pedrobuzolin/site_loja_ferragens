@@ -15,6 +15,6 @@ class ProdutoController extends Controller
 
     public function inserir()
     {
-        
+        return view('produtos.inserir');
     }
 }

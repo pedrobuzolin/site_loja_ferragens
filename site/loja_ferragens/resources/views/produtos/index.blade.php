@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div>
-                    <a class="btn btn-success" href="">Novo</a>
+                    <a class="btn btn-success" href="produtos/novo">Novo</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table text-nowrap align-middle mb-0">
@@ -43,7 +43,7 @@
                                     <a><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
                                 </td>
                             </tr>
-                                                <tr>
+                            <tr>
                                 <th class="text-center ps-0 fw-medium">1</th>
                                 <td class="text-center fw-medium">Martelo</td>
                                 <td class="text-center fw-medium">Martelo Polido</td>
