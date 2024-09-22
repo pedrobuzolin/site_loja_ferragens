@@ -38,6 +38,7 @@
                                                     <p>Lâmpada de Led, luz branca 6500k</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$12.99 / un</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -54,6 +55,7 @@
                                                     <p>Carrinho de Mão Preto, pneu 3,25 x 8 - 45 Litros</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$199.99 / un</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -70,6 +72,7 @@
                                                     <p>Furadeira Dewalt com impacto, 710W, 220v</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$599.99 / un</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar </a>
                                                     </div>
                                                 </div>
@@ -86,6 +89,7 @@
                                                     <p>Alicate Universal Gedore Profissional, 8"</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$117.99 / un</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar </a>
                                                     </div>
                                                 </div>
@@ -102,6 +106,7 @@
                                                     <p>Fogão Industrial 2 Bocas, Alta Pressão, ITAJOBI</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$969.99 / un</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -118,6 +123,7 @@
                                                     <p>Torneira para Jardim, Cromada, acabamento C70</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$74.99 / un</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -134,6 +140,7 @@
                                                     <p>Barraca Iglu 2 Pessoas, C-2,05 - L-1,45m - A-1,00m</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$169.99 / un</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -150,6 +157,7 @@
                                                     <p>Parafuso Chipboard - Cabeça Chata PHS</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$29.99 / ct</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -166,6 +174,7 @@
                                                     <p>Mangueira Jardim Laranja Siliconada, Extra-Flex, 1/2"</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$8.62 / m</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -182,6 +191,8 @@
                                                     <p>Calibrador Pneus com Relógio MS 13-C</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$196.18 / un</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -198,6 +209,7 @@
                                                     <p>Corrediça Telescópica 35cm x 3,5 cm</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$16.99 / par</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -214,6 +226,7 @@
                                                     <p>Bota Preta Cano Curto n.39 - Sola Amarela</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$62.99 / par</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -230,6 +243,7 @@
                                                     <p>Tinta Sprau Preto Fosco - TekBond</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$25.66 / un</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>
@@ -246,6 +260,7 @@
                                                     <p>Escada Alumínio 6 Degraus - MOR</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$259.99 / un</p>
+                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>

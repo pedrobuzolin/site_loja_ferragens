@@ -75,7 +75,7 @@
                                     <a href="jardinagem" class="dropdown-item">Jardinagem / Agrícola</a>
                                     <a href="lazer" class="dropdown-item">Lazer</a>
                                     <a href="marcenaria" class="dropdown-item">Marcenaria</a>
-                                    <a href="parafusos" class="dropdown-item">Parafusos</a>
+                                    <a href="parafusos" class="dropdown-item">Parafusos e Fixação</a>
                                     <a href="seguranca" class="dropdown-item">Segurança e Acessórios</a>
                                     <a href="tintas" class="dropdown-item">Tintas e Acessórios</a>
                                     <a href="utilidades" class="dropdown-item">Utilidades Domésticas</a>
@@ -85,7 +85,7 @@
                             <a href="contato" class="nav-item nav-link">Contato</a>
                         </div>
                         <div class="d-flex m-3 me-0">
-                            <input class="me-4 input-pesquisa" placeholder="Busque um produto"></input>
+                            <input class="me-4 input-pesquisa" placeholder="Busque um produto"/>
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-dark-blue me-4"><i class="fas fa-search text-white"></i></button>    
                         </div>
                         <div class="d-flex  m-3 me-0">
