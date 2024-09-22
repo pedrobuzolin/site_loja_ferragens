@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div>
-                    <a class="btn btn-success" href="produtos/novo">Novo</a>
+                    <a class="btn btn-success" href="/novo">Novo</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table text-nowrap align-middle mb-0">
@@ -39,8 +39,8 @@
                                 <td class="text-center fw-medium">2</td>
                                 <td class="text-center fw-medium">R$ 23,99</td>
                                 <td class="text-center fw-medium">
-                                    <a><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
-                                    <a><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="/alterar"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="/excluir"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
                                 </td>
                             </tr>
                             <tr>
@@ -51,8 +51,8 @@
                                 <td class="text-center fw-medium">2</td>
                                 <td class="text-center fw-medium">R$ 23,99</td>
                                 <td class="text-center fw-medium">
-                                    <a><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
-                                    <a><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="/alterar"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="/excluir"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
                                 </td>
                             </tr>
                         </tbody>

@@ -9,11 +9,6 @@ class VendasController extends Controller
 {
     public function index()
     {
-
-    }
-
-    public function inserir()
-    {
-        
+        return view("vendas.index");
     }
 }

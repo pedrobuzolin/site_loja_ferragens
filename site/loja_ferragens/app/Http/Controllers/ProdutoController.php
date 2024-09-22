@@ -17,4 +17,14 @@ class ProdutoController extends Controller
     {
         return view('produtos.inserir');
     }
+
+    public function alterar()
+    {
+        return view('produtos.alterar');
+    }
+
+    public function excluir()
+    {
+        return view('produtos.index');
+    }
 }

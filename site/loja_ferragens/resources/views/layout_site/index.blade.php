@@ -71,7 +71,7 @@
                                     <a href="ferramentasEletricas" class="dropdown-item">Ferramentas Elétricas</a>
                                     <a href="ferramentasManuais" class="dropdown-item">Ferramentas Manuais</a>
                                     <a href="gastronomia" class="dropdown-item">Gastronomia</a>
-                                    <a href="hidraulica" class="dropdown-item">Hidraúlica</a>
+                                    <a href="hidraulica" class="dropdown-item">Material Hidráulico</a>
                                     <a href="jardinagem" class="dropdown-item">Jardinagem / Agrícola</a>
                                     <a href="lazer" class="dropdown-item">Lazer</a>
                                     <a href="marcenaria" class="dropdown-item">Marcenaria</a>

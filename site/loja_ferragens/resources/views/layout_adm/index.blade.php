@@ -49,7 +49,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+              <a class="sidebar-link" href="clientes" aria-expanded="false">
                 <span>
                     <iconify-icon icon="material-symbols:person" class="fs-6"></iconify-icon>
                 </span>
@@ -57,19 +57,11 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+              <a class="sidebar-link" href="vendas" aria-expanded="false">
                 <span>
                     <iconify-icon icon="mdi:cart-sale" class="fs-6"></iconify-icon>
                 </span>
                 <span class="hide-menu">Vendas</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
-                <span>
-                    <iconify-icon icon="mdi:megaphone" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu">Propaganda</span>
               </a>
             </li>
           </ul>
