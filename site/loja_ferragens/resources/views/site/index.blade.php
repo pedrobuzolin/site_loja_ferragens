@@ -192,7 +192,6 @@
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$196.18 / un</p>
                                                         <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
-                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
                                                 </div>

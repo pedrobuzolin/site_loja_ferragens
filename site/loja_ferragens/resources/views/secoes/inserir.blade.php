@@ -22,6 +22,7 @@
                     </div>
                     <div class="d-grid gap-2 col-3 mx-auto">
                         <button type="submit" class="btn btn-primary">Salvar</button>
+                        <a href="/secoes" class="btn btn-danger">Cancelar</a>
                     </div>
                 </form>
             </div>

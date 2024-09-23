@@ -18,7 +18,7 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-center">
-          <a href="./index.html" class="text-nowrap logo-img">
+          <a href="/adm" class="text-nowrap logo-img">
             <img src="/layout_adm/images/logos/logo_preta.svg" alt="" style="width: 80px; height: 80px;" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -33,7 +33,7 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="produtos" aria-expanded="false">
+              <a class="sidebar-link" href="/produtos" aria-expanded="false">
                 <span>
                     <iconify-icon icon="icon-park-outline:ad-product" class="fs-6"></iconify-icon>
                 </span>
@@ -41,7 +41,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="secoes" aria-expanded="false">
+              <a class="sidebar-link" href="/secoes" aria-expanded="false">
                 <span>
                     <iconify-icon icon="icon-park-outline:ad-product" class="fs-6"></iconify-icon>
                 </span>
@@ -49,7 +49,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="clientes" aria-expanded="false">
+              <a class="sidebar-link" href="/clientes" aria-expanded="false">
                 <span>
                     <iconify-icon icon="material-symbols:person" class="fs-6"></iconify-icon>
                 </span>
@@ -57,7 +57,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="vendas" aria-expanded="false">
+              <a class="sidebar-link" href="/vendas" aria-expanded="false">
                 <span>
                     <iconify-icon icon="mdi:cart-sale" class="fs-6"></iconify-icon>
                 </span>

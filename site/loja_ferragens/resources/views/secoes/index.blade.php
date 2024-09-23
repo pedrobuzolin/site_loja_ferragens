@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div>
-                    <a class="btn btn-success" href="/novo">Novo</a>
+                    <a class="btn btn-success" href="/secoes-novo">Novo</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table text-nowrap align-middle mb-0">
@@ -31,8 +31,8 @@
                                 <th class="text-center ps-0 fw-medium">1</th>
                                 <td class="text-center fw-medium">Ferramentas</td>
                                 <td class="text-center fw-medium">
-                                    <a href="/alterar"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
-                                    <a href="/excluir"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="/secoes-alterar"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="/secoes-excluir"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
                                 </td>
                             </tr>
                         </tbody>

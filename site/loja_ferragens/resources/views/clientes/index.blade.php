@@ -28,8 +28,8 @@
                                 <th class="text-center ps-0 fw-medium">1</th>
                                 <td class="text-center fw-medium">Pedro</td>
                                 <td class="text-center fw-medium">
-                                    <a href="/alterar"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
-                                    <a href="/excluir"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="/clientes-alterar"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="/clientes-excluir"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
                                 </td>
                             </tr>
                         </tbody>

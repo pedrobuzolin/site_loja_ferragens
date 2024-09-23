@@ -55,7 +55,7 @@
             </div>
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-dark-blue navbar-expand-xl">
-                    <a href="home" class="navbar-brand"><img width="80px" height="80px" src="/layout_site/img/logobranca.svg"></a>
+                    <a href="/" class="navbar-brand"><img width="80px" height="80px" src="/layout_site/img/logobranca.svg"></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>

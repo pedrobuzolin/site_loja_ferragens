@@ -71,8 +71,12 @@ Route::get('/login', function(){
     return view('site.login');
 });
 
+Route::get('/criarConta', function(){
+    return view('site.criarConta');
+});
+
 Route::get('/carrinho', function(){
-    return view('carrinho');
+    return view('site.carrinho');
 });
 
 // FIM ROTAS SITE
@@ -84,21 +88,20 @@ Route::get('/adm', function(){
 
 //Produtos
 Route::get('/produtos', [ProdutoController::class, 'index']);
-Route::get('/novo', [ProdutoController::class, 'inserir']);
-Route::get('/alterar', [ProdutoController::class, 'alterar']);
-Route::get('/excluir', [ProdutoController::class, 'excluir']);
+Route::get('/produtos-novo', [ProdutoController::class, 'inserir']);
+Route::get('/produtos-alterar', [ProdutoController::class, 'alterar']);
+Route::get('/produtos-excluir', [ProdutoController::class, 'excluir']);
 
 //Secao
 Route::get('/secoes', [SecaoController::class, 'index']);
-Route::get('/novo', [SecaoController::class, 'inserir']);
-Route::get('/alterar', [SecaoController::class, 'alterar']);
-Route::get('/excluir', [SecaoController::class, 'excluir']);
+Route::get('/secoes-novo', [SecaoController::class, 'inserir']);
+Route::get('/secoes-alterar', [SecaoController::class, 'alterar']);
+Route::get('/secoes-excluir', [SecaoController::class, 'excluir']);
 
 //Pessoa
 Route::get('/clientes', [PessoaController::class, 'index']);
-Route::get('/novo', [PessoaController::class, 'inserir']);
-Route::get('/alterar', [PessoaController::class, 'alterar']);
-Route::get('/excluir', [PessoaController::class, 'excluir']);
+Route::get('/clientes-alterar', [PessoaController::class, 'alterar']);
+Route::get('/clientes-excluir', [PessoaController::class, 'excluir']);
 
 //Vendas
 Route::get('/vendas', [VendasController::class, 'index']);
