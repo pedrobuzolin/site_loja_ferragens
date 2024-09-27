@@ -86,17 +86,20 @@ Route::get('/adm', function(){
     return view('layout_adm.index');
 });
 
+//Secao
+Route::get('/adm/secoes', [SecaoController::class, 'index'])->name('secoes');
+Route::get('/adm/secoes/novo', [SecaoController::class, 'incluir'])->name('secoes_novo');
+Route::post('/adm/secoes/novo', [SecaoController::class, 'incluirSecao'])->name('secoes_novo');
+Route::get('/adm/secoes/alterar/{id}', [SecaoController::class, 'buscarAlteracao'])->name('secoes_alterar');
+Route::post('/adm/secoes/alterar', [SecaoController::class, 'executarAlteracao'])->name('secoes_alt');;
+Route::get('/adm/secoes/excluir/{id}', [SecaoController::class, 'excluir'])->name('secoes_excluir');
+
 //Produtos
 Route::get('/produtos', [ProdutoController::class, 'index']);
 Route::get('/produtos-novo', [ProdutoController::class, 'inserir']);
 Route::get('/produtos-alterar', [ProdutoController::class, 'alterar']);
 Route::get('/produtos-excluir', [ProdutoController::class, 'excluir']);
 
-//Secao
-Route::get('/secoes', [SecaoController::class, 'index']);
-Route::get('/secoes-novo', [SecaoController::class, 'inserir']);
-Route::get('/secoes-alterar', [SecaoController::class, 'alterar']);
-Route::get('/secoes-excluir', [SecaoController::class, 'excluir']);
 
 //Pessoa
 Route::get('/clientes', [PessoaController::class, 'index']);

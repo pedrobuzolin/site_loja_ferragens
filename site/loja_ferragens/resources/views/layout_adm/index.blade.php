@@ -41,7 +41,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/secoes" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('secoes')}}" aria-expanded="false">
                 <span>
                     <iconify-icon icon="icon-park-outline:ad-product" class="fs-6"></iconify-icon>
                 </span>

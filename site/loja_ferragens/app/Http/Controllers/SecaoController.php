@@ -9,21 +9,50 @@ class SecaoController extends Controller
 {
     public function index()
     {
-        return view("secoes.index");
+        $secao = Secao::all()->where("secao_ativo", "1");
+
+        return view('secoes.index', compact('secao'));
     }
 
-    public function inserir()
+    public function incluir()
     {
         return view('secoes.inserir');
     }
 
-    public function alterar()
+    public function incluirSecao(Request $request)
     {
-        return view('secoes.alterar');
+        $nomeSecao = $request->input("nomeSecao");
+
+        $novaSecao = new Secao;
+        $novaSecao->nomeSecao = $nomeSecao;
+        $novaSecao->save();
+
+        return redirect('/adm/secoes');
     }
 
-    public function excluir()
+    public function buscarAlteracao($id)
     {
-        return view('secoes.index');
+        $secao = Secao::where("id", $id)->first();
+        return view('secoes.alterar', compact('secao'));
+    }
+
+    public function executarAlteracao(Request $request)
+    {
+        $nomeSecao = $request->input("nomeSecao");
+        $idSecao = $request->input("id");
+
+        $secao = Secao::where("id", $idSecao)->first();
+        $secao->nomeSecao = $nomeSecao;
+        $secao->save();
+
+        return redirect('/adm/secoes');
+    }
+
+    public function excluir($id)
+    {
+        $secao = Secao::where("id", $id)->first();
+        $secao->secao_ativo = 0;
+        $secao->save();
+        return redirect('/adm/secoes');
     }
 }

@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div>
-                    <a class="btn btn-success" href="/secoes-novo">Novo</a>
+                    <a class="btn btn-success" href="{{route('secoes_novo')}}">Novo</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table text-nowrap align-middle mb-0">
@@ -27,14 +27,16 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
+                            @foreach ($secao as $linha)
                             <tr>
-                                <th class="text-center ps-0 fw-medium">1</th>
-                                <td class="text-center fw-medium">Ferramentas</td>
+                                <th class="text-center ps-0 fw-medium">{{$linha->id}}</th>
+                                <td class="text-center fw-medium">{{$linha->nomeSecao}}</td>
                                 <td class="text-center fw-medium">
-                                    <a href="/secoes-alterar"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
-                                    <a href="/secoes-excluir"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="{{route('secoes_alterar', ["id" => $linha->id])}}"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="{{route('secoes_excluir', ["id" => $linha->id])}}"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
