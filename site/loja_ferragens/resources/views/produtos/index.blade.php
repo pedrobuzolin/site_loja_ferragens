@@ -15,15 +15,15 @@
                     </div>
                 </div>
                 <div>
-                    <a class="btn btn-success" href="/produtos-novo">Novo</a>
+                    <a class="btn btn-success" href="{{route('produtos_novo')}}">Novo</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table text-nowrap align-middle mb-0">
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0"> 
                                 <th scope="col" class="text-center ps-0">ID</th>
+                                <th scope="col" class="text-center">Foto</th>
                                 <th scope="col" class="text-center">Nome</th>
-                                <th scope="col" class="text-center">Descrição</th>
                                 <th scope="col" class="text-center">Unidade</th>
                                 <th scope="col" class="text-center">Estoque</th>
                                 <th scope="col" class="text-center">Preço</th>
@@ -31,30 +31,23 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
+                        @foreach ($produtos as $linha)
                             <tr>
-                                <th class="text-center ps-0 fw-medium">1</th>
-                                <td class="text-center fw-medium">Martelo</td>
-                                <td class="text-center fw-medium">Martelo Polido</td>
-                                <td class="text-center fw-medium">UN</td>
-                                <td class="text-center fw-medium">2</td>
-                                <td class="text-center fw-medium">R$ 23,99</td>
+                                <th class="text-center ps-0 fw-medium">{{$linha->id}}</th>
+                                <td class="text-center fw-medium col-2">                                                   
+                                    @if($linha->imagens)
+                                        <img src="{{$linha->imagens->first()->linkImagem}}" class="img-fluid w-50 rounded-top" alt="">
+                                    @endif</td>
+                                <td class="text-center fw-medium">{{$linha->nome}}</td>
+                                <td class="text-center fw-medium">{{$linha->unidadeMedida}}</td>
+                                <td class="text-center fw-medium">{{$linha->estoque}}</td>
+                                <td class="text-center fw-medium">{{$linha->preco}}</td>
                                 <td class="text-center fw-medium">
-                                    <a href="/produtos-alterar"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
-                                    <a href="/produtos-excluir"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="{{route('produtos_alterar', ["id" => $linha->id])}}"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
+                                    <a href="{{route('produtos_excluir', ["id" => $linha->id])}}"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
                                 </td>
                             </tr>
-                            <tr>
-                                <th class="text-center ps-0 fw-medium">1</th>
-                                <td class="text-center fw-medium">Martelo</td>
-                                <td class="text-center fw-medium">Martelo Polido</td>
-                                <td class="text-center fw-medium">UN</td>
-                                <td class="text-center fw-medium">2</td>
-                                <td class="text-center fw-medium">R$ 23,99</td>
-                                <td class="text-center fw-medium">
-                                    <a href="/produtos-alterar"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
-                                    <a href="/produtos-excluir"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
-                                </td>
-                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

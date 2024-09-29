@@ -11,61 +11,7 @@ Route::get('/', function () {
     return view('site.index');
 });
 
-Route::get('/automotivo', function () {
-    return view('site.automotivo');
-});
-
-Route::get('/eletrica', function () {
-    return view('site.eletrica');
-});
-
-Route::get('/ferragens', function () {
-    return view('site.ferragens');
-});
-
-Route::get('/ferramentasEletricas', function () {
-    return view('site.ferramentasEletricas');
-});
-
-Route::get('/ferramentasManuais', function () {
-    return view('site.ferramentasManuais');
-});
-
-Route::get('/gastronomia', function () {
-    return view('site.gastronomia');
-});
-
-Route::get('/hidraulica', function () {
-    return view('site.hidraulica');
-});
-
-Route::get('/jardinagem', function () {
-    return view('site.jardinagem');
-});
-
-Route::get('/lazer', function () {
-    return view('site.lazer');
-});
-
-Route::get('/marcenaria', function () {
-    return view('site.marcenaria');
-});
-
-Route::get('/parafusos', function () {
-    return view('site.parafusos');
-});
-
-Route::get('/seguranca', function () {
-    return view('site.seguranca');
-});
-
-Route::get('/tintas', function () {
-    return view('site.tintas');
-});
-
-Route::get('/utilidades', function () {
-    return view('site.utilidades');
-});
+Route::get('/secoes/{id}', [ProdutoController::class, 'exibirProdutos'])->name('secoes_exibir');
 
 Route::get('/login', function(){
     return view('site.login');
@@ -95,18 +41,20 @@ Route::post('/adm/secoes/alterar', [SecaoController::class, 'executarAlteracao']
 Route::get('/adm/secoes/excluir/{id}', [SecaoController::class, 'excluir'])->name('secoes_excluir');
 
 //Produtos
-Route::get('/produtos', [ProdutoController::class, 'index']);
-Route::get('/produtos-novo', [ProdutoController::class, 'inserir']);
-Route::get('/produtos-alterar', [ProdutoController::class, 'alterar']);
-Route::get('/produtos-excluir', [ProdutoController::class, 'excluir']);
+Route::get('/adm/produtos', [ProdutoController::class, 'index'])->name('produtos');
+Route::get('/adm/produtos/novo', [ProdutoController::class, 'inserir'])->name('produtos_novo');
+Route::post('/adm/produtos/novo', [ProdutoController::class, 'incluirProduto'])->name('produtos_novo');
+Route::get('/adm/produtos/alterar/{id}', [ProdutoController::class, 'alterar'])->name('produtos_alterar');
+Route::post('/adm/produtos/alterar', [ProdutoController::class, 'executarAlteracao'])->name('produtos_alt');;
+Route::get('/adm/produtos/excluir/{id}', [ProdutoController::class, 'excluir'])->name('produtos_excluir');
 
 
 //Pessoa
-Route::get('/clientes', [PessoaController::class, 'index']);
-Route::get('/clientes-alterar', [PessoaController::class, 'alterar']);
-Route::get('/clientes-excluir', [PessoaController::class, 'excluir']);
+Route::get('/adm/clientes', [PessoaController::class, 'index'])->name('clientes');
+Route::get('/adm/clientes-alterar', [PessoaController::class, 'alterar']);
+Route::get('/adm/clientes-excluir', [PessoaController::class, 'excluir']);
 
 //Vendas
-Route::get('/vendas', [VendasController::class, 'index']);
+Route::get('/adm/vendas', [VendasController::class, 'index'])->name('vendas');
 
 // FIM ROTAS ADM

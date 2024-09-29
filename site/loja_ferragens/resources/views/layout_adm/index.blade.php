@@ -33,7 +33,7 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/produtos" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('produtos')}}" aria-expanded="false">
                 <span>
                     <iconify-icon icon="icon-park-outline:ad-product" class="fs-6"></iconify-icon>
                 </span>
@@ -49,7 +49,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/clientes" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('clientes')}}" aria-expanded="false">
                 <span>
                     <iconify-icon icon="material-symbols:person" class="fs-6"></iconify-icon>
                 </span>
@@ -57,7 +57,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/vendas" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('vendas')}}" aria-expanded="false">
                 <span>
                     <iconify-icon icon="mdi:cart-sale" class="fs-6"></iconify-icon>
                 </span>

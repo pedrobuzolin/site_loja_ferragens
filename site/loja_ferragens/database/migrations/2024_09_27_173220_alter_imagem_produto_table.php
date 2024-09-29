@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('produtos', function (Blueprint $table) {
-            $table->boolean('produto_ativo')->default(1);
+        Schema::table('imagem_produto', function (Blueprint $table) {
+            $table->dropColumn('dataImagem');
         });
     }
 

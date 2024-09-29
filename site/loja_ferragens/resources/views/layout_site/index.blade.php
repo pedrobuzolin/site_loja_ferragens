@@ -65,20 +65,11 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Produtos</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="/automotivo" class="dropdown-item">Automotivo</a>
-                                    <a href="/eletrica" class="dropdown-item">Material Elétrico</a>
-                                    <a href="/ferragens" class="dropdown-item">Ferragens</a>
-                                    <a href="/ferramentasEletricas" class="dropdown-item">Ferramentas Elétricas</a>
-                                    <a href="/ferramentasManuais" class="dropdown-item">Ferramentas Manuais</a>
-                                    <a href="/gastronomia" class="dropdown-item">Gastronomia</a>
-                                    <a href="/hidraulica" class="dropdown-item">Material Hidráulico</a>
-                                    <a href="/jardinagem" class="dropdown-item">Jardinagem / Agrícola</a>
-                                    <a href="/lazer" class="dropdown-item">Lazer</a>
-                                    <a href="/marcenaria" class="dropdown-item">Marcenaria</a>
-                                    <a href="/parafusos" class="dropdown-item">Parafusos e Fixação</a>
-                                    <a href="/seguranca" class="dropdown-item">Segurança e Acessórios</a>
-                                    <a href="/tintas" class="dropdown-item">Tintas e Acessórios</a>
-                                    <a href="/utilidades" class="dropdown-item">Utilidades Domésticas</a>
+                                    @foreach ($secoes as $linha)
+                                        <a href="{{route('secoes_exibir', ["id" => $linha->id])}}" class="dropdown-item">{{$linha->nomeSecao}}</a>
+                                    @endforeach
+                                    
+
                                 </div>
                             </div>
                             <a href="quemSomos" class="nav-item nav-link">Quem Somos</a>

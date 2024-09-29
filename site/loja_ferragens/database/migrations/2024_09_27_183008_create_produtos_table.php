@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('unidadeMedida');
             $table->float('preco');
             $table->float('estoque');
+            $table->boolean('produto_ativo')->default(1);
             $table->timestamps();
         });
     }

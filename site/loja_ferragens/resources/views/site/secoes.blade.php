@@ -7,7 +7,9 @@
                 <div class="tab-class text-center">
                     <div class="row g-4">
                         <div class="col-lg-8 text-start">
-                            <h1>Jardinagem / Agrícola</h1>
+                            @if($secao)
+                                <h1>{{$secao->nomeSecao}}</h1>
+                            @endif
                         </div>
                     </div>
                     <div class="tab-content">
@@ -15,17 +17,20 @@
                             <div class="row g-4">
                                 <div class="col-lg-12">
                                     <div class="row g-4">
+                                    @foreach ($produtos as $linha )
                                         <div class="col-md-6 col-lg-4 col-xl-3">
                                             <div class="rounded position-relative fruite-item">
                                                 <div class="fruite-img">
-                                                    <img src="/layout_site/img/calibrador 13c.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                                    @if($linha->imagens)
+                                                        <img src="{{$linha->imagens->first()->linkImagem}}" class="img-fluid w-100 rounded-top" alt="">
+                                                    @endif
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Automotivo</div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">{{$secao->nomeSecao}}</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>Calibrador Pneus - MS 13-C</h4>
-                                                    <p>Calibrador Pneus com Relógio MS 13-C</p>
+                                                    <h4>{{$linha->nome}}</h4>
+                                                    <p>{{$linha->descricaoProduto}}</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$196.18 / un</p>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">R${{$linha->preco}}/ {{$linha->unidadeMedida}}</p>
                                                         <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                                     </div>
@@ -33,6 +38,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
