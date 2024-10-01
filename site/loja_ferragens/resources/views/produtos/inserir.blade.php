@@ -40,6 +40,14 @@
                         <label for="preco" class="form-label">Preço</label>
                         <input type="text" class="form-control" name="preco" id="preco" required>
                     </div>
+                    <div class="col-md-4">
+                        <label for="destaque" class="form-label">Destaque</label>
+                        <select name="destaque" id="destaque" class="form-select">
+                        <option selected>Escolha...</option>
+                        <option>SIM</option>
+                        <option>NÃO</option>
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <label for="imagem" class="form-label">Escolha a foto do produto</label>
                         <input class="form-control" type="file" name="imagem" id="imgem" required>

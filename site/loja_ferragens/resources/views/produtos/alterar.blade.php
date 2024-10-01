@@ -45,6 +45,20 @@
                         <label for="preco" class="form-label">Preço</label>
                         <input type="text" class="form-control" name="preco" id="preco" value="{{$produto->preco}}" required>
                     </div>
+                    <div class="col-md-4">
+                        <label for="destaque" class="form-label">Destaque</label>
+                        <select name="destaque" id="destaque" class="form-select">
+                        <option selected value="{{$produto->produto_destaque}}">
+                            @if($produto->produto_destaque == 0)
+                                NÃO
+                            @else
+                                SIM
+                            @endif
+                        </option>
+                        <option>SIM</option>
+                        <option>NÃO</option>
+                        </select>
+                    </div>
                     <div class="mt-2">
                         <p>Imagem atual</p>
                         <img src="{{$produto->imagens->first()->linkImagem}}" alt="{{$produto->nome}}" width="100">

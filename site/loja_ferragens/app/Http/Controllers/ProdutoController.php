@@ -32,6 +32,7 @@ class ProdutoController extends Controller
         $estoque = $request->input("estoque");
         $unidade = $request->input("unidade");
         $preco = $request->input("preco");
+        $destaque = $request->input("destaque");
 
         $novoProduto = new Produto;
         $novoProduto->nome = $nomeProd;
@@ -40,6 +41,9 @@ class ProdutoController extends Controller
         $novoProduto->unidadeMedida = $unidade;
         $novoProduto->estoque = $estoque;
         $novoProduto->preco = $preco;
+        if($destaque == "SIM"){
+            $novoProduto->produto_destaque = 1;
+        }
         $novoProduto->save();
 
         $idProduto = $novoProduto->id;
@@ -71,6 +75,7 @@ class ProdutoController extends Controller
         $estoque = $request->input("estoque");
         $unidade = $request->input("unidade");
         $preco = $request->input("preco");
+        $destaque = $request->input("destaque");
 
         $produto = Produto::where("id", $id)->first();
         $produto->nome = $nome;
@@ -79,6 +84,9 @@ class ProdutoController extends Controller
         $produto->unidadeMedida = $unidade;
         $produto->preco = $preco;
         $produto->estoque = $estoque;
+        if($destaque == "SIM"){
+            $produto->produto_destaque = 1;
+        }
  
         if ($request->hasFile("imagem")) {
             $novaImagem = Cloudinary::upload($request->file("imagem")->getPathname())->getSecurePath();
@@ -93,9 +101,19 @@ class ProdutoController extends Controller
         return redirect('/adm/produtos');
     }
 
-    public function excluir()
+    public function excluir($id)
     {
-        return view('produtos.index');
+        $produto = Produto::where("id", $id)->first();
+        $produto->produto_ativo = 0;
+        $produto->save();
+        return redirect('/adm/produtos');
+    }
+
+    public function exibirDestaques()
+    {
+        $produtos = Produto::all()->where("produto_destaque", "1");
+        $secao = Secao::where("secao_ativo", "1")->get();
+        return view('site.index', compact('produtos', 'secao'));
     }
 
     public function exibirProdutos($id)

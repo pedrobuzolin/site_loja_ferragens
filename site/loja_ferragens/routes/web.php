@@ -7,9 +7,7 @@ use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\VendasController;
 
 // INICIO ROTAS SITE
-Route::get('/', function () {
-    return view('site.index');
-});
+Route::get('/', [ProdutoController::class, 'exibirDestaques']);
 
 Route::get('/secoes/{id}', [ProdutoController::class, 'exibirProdutos'])->name('secoes_exibir');
 
