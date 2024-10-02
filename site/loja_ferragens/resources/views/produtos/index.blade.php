@@ -27,6 +27,7 @@
                                 <th scope="col" class="text-center">Unidade</th>
                                 <th scope="col" class="text-center">Estoque</th>
                                 <th scope="col" class="text-center">Preço</th>
+                                <th scope="col" class="text-center">Destaque</th>
                                 <th scope="col" class="text-center">Opções</th>
                             </tr>
                         </thead>
@@ -42,6 +43,13 @@
                                 <td class="text-center fw-medium">{{$linha->unidadeMedida}}</td>
                                 <td class="text-center fw-medium">{{$linha->estoque}}</td>
                                 <td class="text-center fw-medium">{{$linha->preco}}</td>
+                                <td class="text-center fw-medium">                            
+                                    @if($linha->produto_destaque == 0)
+                                        NÃO
+                                    @else
+                                        SIM
+                                    @endif
+                                </td>
                                 <td class="text-center fw-medium">
                                     <a href="{{route('produtos_alterar', ["id" => $linha->id])}}"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
                                     <a href="{{route('produtos_excluir', ["id" => $linha->id])}}"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
