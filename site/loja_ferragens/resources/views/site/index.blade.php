@@ -1,6 +1,6 @@
-@extends("layout_site.index")
+@extends('layout_site.index')
 
-@section("conteudo")
+@section('conteudo')
     <div class="swiper carrossel">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img class="img-fluid" src="/layout_site/img/fachada.svg" alt="Pontos em Dobro"></div>
@@ -9,11 +9,11 @@
         </div>
 
         <div class="swiper-pagination"></div>
-    
+
         <div class="swiper-button-prev" style="display: none;"></div>
         <div class="swiper-button-next" style="display: none;"></div>
     </div>
-        <!-- Fruits Shop Start-->
+    <!-- Fruits Shop Start-->
     <div class="container-fluid fruite produtos py-5">
         <div class="container py-5">
             <div class="tab-class text-center">
@@ -22,58 +22,60 @@
                         <h1>Produtos</h1>
                     </div>
                 </div>
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div class="row g-4">
+                    <div class="col-lg-12">
                         <div class="row g-4">
-                            <div class="col-lg-12">
-                                <div class="row g-4">
-                                    @foreach ($produtos as $linha )
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    @if($linha->imagens)
-                                                        <img src="{{$linha->imagens->first()->linkImagem}}" class="img-fluid w-100 rounded-top" alt="">
-                                                    @endif
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
-                                                    @if($linha->secao)
-                                                    {{$linha->secao->nomeSecao}}
-                                                    @endif
-                                                </div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>{{$linha->nome}}</h4>
-                                                    <p>{{$linha->descricaoProduto}}</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R${{$linha->preco}}/ {{$linha->unidadeMedida}}</p>
-                                                        <input type="number" name="quantidade" id="quantidade" class="form-control col-2 mt-2 mb-2"/>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
-                                                    </div>
-                                                </div>
+                            @foreach ($produtos as $linha)
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            @if ($linha->imagens)
+                                                <img src="{{ $linha->imagens->first()->linkImagem }}"
+                                                    class="img-fluid w-100 rounded-top" alt="">
+                                            @endif
+                                        </div>
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                            style="top: 10px; left: 10px;">
+                                            @if ($linha->secao)
+                                                {{ $linha->secao->nomeSecao }}
+                                            @endif
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>{{ $linha->nome }}</h4>
+                                            <p>{{ $linha->descricaoProduto }}</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">R${{ $linha->preco }}/
+                                                    {{ $linha->unidadeMedida }}</p>
+                                                <input type="number" name="quantidade" id="quantidade"
+                                                    class="form-control col-2 mt-2 mb-2" />
+                                                <a href="#"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-            </div>      
+            </div>
         </div>
     </div>
-        <!-- Fruits Shop End-->
+    <!-- Fruits Shop End-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         const swiperBanner = new Swiper('.swiper', {
-           speed: 400,
-           slidesPerView: 1,
+            speed: 400,
+            slidesPerView: 1,
 
-           pagination: {
+            pagination: {
                 el: '.swiper-pagination',
                 type: 'bullets',
             },
 
-           autoplay: {
-            delay: 5000,
+            autoplay: {
+                delay: 5000,
             },
         });
     </script>
