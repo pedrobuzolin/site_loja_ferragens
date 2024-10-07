@@ -31,6 +31,8 @@
         
         <!-- Carrossel -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
 
     <body>
@@ -72,19 +74,19 @@
 
                                 </div>
                             </div>
-                            <a href="quemSomos" class="nav-item nav-link">Quem Somos</a>
-                            <a href="contato" class="nav-item nav-link">Contato</a>
+                            <a href="/quemSomos" class="nav-item nav-link">Quem Somos</a>
+                            <a href="/contato" class="nav-item nav-link">Contato</a>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <input class="me-4 input-pesquisa" placeholder="Busque um produto"/>
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-dark-blue me-4"><i class="fas fa-search text-white"></i></button>    
                         </div>
                         <div class="d-flex  m-3 me-0">
-                            <a href="carrinho" class="position-relative me-4 my-auto">
+                            <a href="/carrinho" class="position-relative me-4 my-auto">
                                 <i class="fas fa-shopping-cart fa-2x"></i>
-                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -8px; left: 25px; height: 20px; min-width: 20px;">3</span>
+                                <span id="carrinho_itens" class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -8px; left: 25px; height: 20px; min-width: 20px;">0</span>
                             </a>
-                            <a href="login" class="my-auto">
+                            <a href="/login" class="my-auto">
                                 <i class="fas fa-user fa-2x"></i>
                             </a>
                         </div>
@@ -130,6 +132,7 @@
 
     <!-- Template Javascript -->
     <script src="/layout_site/js/main.js"></script>
+    <script src="/layout_site/js/carrinho.js"></script>
     </body>
 
 </html>

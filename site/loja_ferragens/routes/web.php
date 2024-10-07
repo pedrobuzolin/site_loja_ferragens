@@ -5,6 +5,7 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SecaoController;
 use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\VendasController;
+use App\Http\Controllers\CarrinhoController;
 
 // INICIO ROTAS SITE
 Route::get('/', [ProdutoController::class, 'exibirDestaques']);
@@ -19,9 +20,12 @@ Route::get('/criarConta', function(){
     return view('site.criarConta');
 });
 
-Route::get('/carrinho', function(){
-    return view('site.carrinho');
-});
+Route::get('/carrinho', [CarrinhoController::class, 'index']);
+Route::post('/adicionar-produto', [CarrinhoController::class, 'adicionarProduto'])->name('add-produto');
+Route::get('/aumentar-quantidade/{id}', [CarrinhoController::class, 'aumentarQuantidade'])->name('add-qte');
+Route::get('/diminuir-quantidade/{id}', [CarrinhoController::class, 'diminuirQuantidade'])->name('rm-qte');
+Route::get('/remover-produto/{id}', [CarrinhoController::class, 'removerProduto'])->name('rm-prod');
+Route::get('/itens-carrinho', [CarrinhoController::class, 'contarItens']);
 
 // FIM ROTAS SITE
 

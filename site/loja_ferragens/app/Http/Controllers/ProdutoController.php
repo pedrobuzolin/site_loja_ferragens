@@ -113,6 +113,7 @@ class ProdutoController extends Controller
     {
         $produtos = Produto::all()->where("produto_destaque", "1");
         $secao = Secao::where("secao_ativo", "1")->get();
+        $carrinho = session('carrinho', []);
         return view('site.index', compact('produtos', 'secao'));
     }
 
@@ -120,7 +121,7 @@ class ProdutoController extends Controller
     {
         $secao = Secao::where("id", $id)->first();
         $produtos = Produto::with('imagens')->where("idSecao", $id)->where("produto_ativo", "1")->get();
-
+        $carrinho = session('carrinho', []);
         return view('site.secoes', compact('produtos', 'secao'));
     }
 }

@@ -27,33 +27,35 @@
                         <div class="row g-4">
                             @foreach ($produtos as $linha)
                                 <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            @if ($linha->imagens)
-                                                <img src="{{ $linha->imagens->first()->linkImagem }}"
-                                                    class="img-fluid w-100 rounded-top" alt="">
-                                            @endif
-                                        </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                            style="top: 10px; left: 10px;">
-                                            @if ($linha->secao)
-                                                {{ $linha->secao->nomeSecao }}
-                                            @endif
-                                        </div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <h4>{{ $linha->nome }}</h4>
-                                            <p>{{ $linha->descricaoProduto }}</p>
-                                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0">R${{ $linha->preco }}/
-                                                    {{ $linha->unidadeMedida }}</p>
-                                                <input type="number" name="quantidade" id="quantidade"
-                                                    class="form-control col-2 mt-2 mb-2" />
-                                                <a href="#"
-                                                    class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Comprar</a>
+                                    <form action="{{route('add-produto')}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$linha->id}}">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                @if ($linha->imagens)
+                                                    <img src="{{ $linha->imagens->first()->linkImagem }}"
+                                                        class="img-fluid w-100 rounded-top" alt="{{ $linha->nome }}">
+                                                @endif
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                                style="top: 10px; left: 10px;">{{ $linha->secao->nomeSecao }}</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>{{ $linha->nome }}</h4>
+                                                <p>{{ $linha->descricaoProduto }}</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap produto">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R${{ $linha->preco }}/
+                                                        {{ $linha->unidadeMedida }}</p>
+                                                    <input type="number" name="quantidade" id="quantidade"
+                                                    class="form-control col-2 mt-2 mb-2"/>
+                                                    <button type="button"
+                                                        class="btn border border-secondary rounded-pill px-3 text-primary add_carrinho" data-id-produto="{{$linha->id}}">
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                        Comprar
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             @endforeach
                         </div>
