@@ -15,7 +15,7 @@ class CarrinhoController extends Controller
         $total = 0;
 
         foreach ($carrinho as $produtoId => $prod) {
-            $carrinho[$produtoId]['subtotal'] = $item['preco'] * $prod['quantidade'];
+            $carrinho[$produtoId]['subtotal'] = $prod['preco'] * $prod['quantidade'];
             $total += $carrinho[$produtoId]['subtotal'];
         }
     
