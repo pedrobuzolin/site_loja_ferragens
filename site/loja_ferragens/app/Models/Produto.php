@@ -10,7 +10,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Produto extends Model
 {
     use HasFactory;
-    protected $table = 'produtos';
+    protected $table = "produtos";
+    
+    protected $fillable = [
+        'idSecao',
+        'nome',
+        'descricaoProduto',
+        'unidadeMedida',
+        'preco',
+        'estoque'
+    ];
 
     public function imagens() : HasMany
     {
