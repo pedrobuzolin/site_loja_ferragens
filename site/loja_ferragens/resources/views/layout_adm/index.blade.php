@@ -30,7 +30,7 @@
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
-              <span class="hide-menu">Home</span>
+              <span class="hide-menu">Cadastros</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('produtos')}}" aria-expanded="false">
@@ -47,6 +47,18 @@
                 </span>
                 <span class="hide-menu">Seções</span>
               </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{route('un-medidas')}}" aria-expanded="false">
+                <span>
+                    <iconify-icon icon="icon-park-outline:ad-product" class="fs-6"></iconify-icon>
+                </span>
+                <span class="hide-menu">Unidades de Medidas</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
+              <span class="hide-menu">Consultas</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('clientes')}}" aria-expanded="false">

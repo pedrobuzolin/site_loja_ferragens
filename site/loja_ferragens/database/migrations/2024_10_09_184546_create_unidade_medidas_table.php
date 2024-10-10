@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('imagem_produto', function (Blueprint $table) {
+        Schema::create('unidade_medidas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idProduto');
-            $table->date('dataImagem');
-            $table->string('linkImagem');
+            $table->string('unidadeMedida');
+            $table->boolean('uni_ativo')->default(1);
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('imagem_produto');
+        Schema::dropIfExists('unidade_medidas');
     }
 };

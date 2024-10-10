@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('produtos', function (Blueprint $table) {
-            $table->boolean('produto_destaque')->default(0);
+        Schema::create('imagem_produto', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('idProduto')->constrained('produtos');
+            $table->string('urlImagem');
+            $table->timestamps();
         });
     }
 
@@ -21,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('imagem_produto');
     }
 };

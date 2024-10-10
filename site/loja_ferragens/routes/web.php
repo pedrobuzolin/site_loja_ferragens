@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SecaoController;
+use App\Http\Controllers\UnidadesMedidasController;
 use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\VendasController;
 use App\Http\Controllers\CarrinhoController;
@@ -42,10 +43,19 @@ Route::get('/adm/secoes/alterar/{id}', [SecaoController::class, 'buscarAlteracao
 Route::post('/adm/secoes/alterar', [SecaoController::class, 'executarAlteracao'])->name('secoes_alt');;
 Route::get('/adm/secoes/excluir/{id}', [SecaoController::class, 'excluir'])->name('secoes_excluir');
 
+//Unidades de Medida
+Route::get('/adm/unidades-medidas', [UnidadesMedidasController::class, 'index'])->name('un-medidas');
+Route::get('/adm/unidades-medidas/novo', [UnidadesMedidasController::class, 'incluir'])->name('uni_novo');
+Route::post('/adm/unidades-medidas/novo', [UnidadesMedidasController::class, 'incluirUnidade'])->name('uni_add');
+Route::get('/adm/unidades-medidas/alterar/{id}', [UnidadesMedidasController::class, 'buscarAlteracao'])->name('uni_alterar');
+Route::post('/adm/unidades-medidas/alterar', [UnidadesMedidasController::class, 'executarAlteracao'])->name('uni_alt');;
+Route::get('/adm/unidades-medidas/excluir/{id}', [UnidadesMedidasController::class, 'excluir'])->name('uni_excluir');
+
+
 //Produtos
 Route::get('/adm/produtos', [ProdutoController::class, 'index'])->name('produtos');
 Route::get('/adm/produtos/novo', [ProdutoController::class, 'inserir'])->name('produtos_novo');
-Route::post('/adm/produtos/novo', [ProdutoController::class, 'incluirProduto'])->name('produtos_novo');
+Route::post('/adm/produtos/novo', [ProdutoController::class, 'incluirProduto'])->name('produtos_add');
 Route::get('/adm/produtos/alterar/{id}', [ProdutoController::class, 'alterar'])->name('produtos_alterar');
 Route::post('/adm/produtos/alterar', [ProdutoController::class, 'executarAlteracao'])->name('produtos_alt');;
 Route::get('/adm/produtos/excluir/{id}', [ProdutoController::class, 'excluir'])->name('produtos_excluir');

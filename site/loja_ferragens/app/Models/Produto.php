@@ -14,11 +14,12 @@ class Produto extends Model
     
     protected $fillable = [
         'idSecao',
+        'idUniMedida',
         'nome',
         'descricaoProduto',
-        'unidadeMedida',
         'preco',
-        'estoque'
+        'estoque',
+        'produto_destaque',
     ];
 
     public function imagens() : HasMany
@@ -29,5 +30,10 @@ class Produto extends Model
     public function secao() : BelongsTo
     {
         return $this->belongsTo(Secao::class, 'idSecao');
+    }
+
+    public function unidadeMedida() : BelongsTo
+    {
+        return $this->belongsTo(UnidadeMedidas::class, 'idUniMedida');
     }
 }

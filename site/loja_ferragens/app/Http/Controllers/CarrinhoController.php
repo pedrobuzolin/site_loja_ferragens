@@ -31,7 +31,7 @@ class CarrinhoController extends Controller
         $nome = $produto->nome;
         $preco = $produto->preco;
         $imagem = $produto->imagens->first();
-        $urlImg = $imagem->linkImagem;
+        $urlImg = $imagem->urlImagem;
 
         $carrinho = session()->get('carrinho', []);
 

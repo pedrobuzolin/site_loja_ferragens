@@ -23,7 +23,7 @@
                                         <div class="rounded position-relative fruite-item">
                                             <div class="fruite-img">
                                                 @if ($linha->imagens)
-                                                    <img src="{{ $linha->imagens->first()->linkImagem }}"
+                                                    <img src="{{ $linha->imagens->first()->urlImagem }}"
                                                         class="img-fluid w-100 rounded-top" alt="{{ $linha->nome }}">
                                                 @endif
                                             </div>
@@ -34,7 +34,7 @@
                                                 <p>{{ $linha->descricaoProduto }}</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap produto">
                                                     <p class="text-dark fs-5 fw-bold mb-0">R${{ $linha->preco }}/
-                                                        {{ $linha->unidadeMedida }}</p>
+                                                        {{ $linha->unidadeMedida->unidadeMedida }}</p>
                                                     <input type="number" name="quantidade" id="quantidade"
                                                     class="form-control col-2 mt-2 mb-2"/>
                                                     <button type="button"

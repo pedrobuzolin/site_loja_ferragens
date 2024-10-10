@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idSecao');
+            $table->foreignId('idSecao')->constrained('secao');
+            $table->foreignId('idUniMedida')->constrained('unidade_medidas');
             $table->string('nome');
             $table->string('descricaoProduto');
-            $table->string('unidadeMedida');
             $table->float('preco');
             $table->float('estoque');
+            $table->boolean('produto_destaque')->default(0);
             $table->boolean('produto_ativo')->default(1);
             $table->timestamps();
         });

@@ -18,7 +18,7 @@
                     <a class="btn btn-success" href="{{route('produtos_novo')}}">Novo</a>
                 </div>
                 <div class="table-responsive">
-                    <table class="table text-nowrap align-middle mb-0">
+                    <table class="table text-nowrap align-middle mb-0" id="datatablesSimple">
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0"> 
                                 <th scope="col" class="text-center ps-0">ID</th>
@@ -37,10 +37,10 @@
                                 <th class="text-center ps-0 fw-medium">{{$linha->id}}</th>
                                 <td class="text-center fw-medium col-2">                                                   
                                     @if($linha->imagens)
-                                        <img src="{{$linha->imagens->first()->linkImagem}}" class="img-fluid w-50 rounded-top" alt="">
+                                        <img src="{{$linha->imagens->first()->urlImagem}}" class="img-fluid w-50 rounded-top" alt="">
                                     @endif</td>
                                 <td class="text-center fw-medium">{{$linha->nome}}</td>
-                                <td class="text-center fw-medium">{{$linha->unidadeMedida}}</td>
+                                <td class="text-center fw-medium">{{$linha->unidadeMedida->unidadeMedida}}</td>
                                 <td class="text-center fw-medium">{{$linha->estoque}}</td>
                                 <td class="text-center fw-medium">{{$linha->preco}}</td>
                                 <td class="text-center fw-medium">                            

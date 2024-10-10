@@ -10,6 +10,11 @@ class Imagens extends Model
     use HasFactory;
     protected $table = 'imagem_produto';
 
+    protected $fillable = [
+        'idProduto',
+        'urlImagem',
+    ];
+
     public function produto() : BelongsTo
     {
         return $this->belongsTo(Produto::class, 'idProduto');

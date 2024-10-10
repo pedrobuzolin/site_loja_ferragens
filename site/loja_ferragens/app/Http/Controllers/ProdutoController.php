@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Secao;
+use App\Models\UnidadeMedidas;
 use App\Models\Imagens;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
@@ -20,41 +21,36 @@ class ProdutoController extends Controller
     public function inserir()
     {
         $secao = Secao::all()->where("secao_ativo", "1");
+        $unidadeMedidas = UnidadeMedidas::all()->where("uni_ativo", "1");
 
-        return view('produtos.inserir', compact('secao'));
+        return view('produtos.inserir', compact('secao', 'unidadeMedidas'));
     }
 
     public function incluirProduto(Request $request)
     {
-        $nomeProd = $request->input("nomeProduto");
-        $descricaoProduto = $request->input("descricaoProduto");
-        $idSecao = $request->input("idSecao");
-        $estoque = $request->input("estoque");
-        $unidade = $request->input("unidade");
-        $preco = $request->input("preco");
-        $destaque = $request->input("destaque");
+        $request->validate([
+            'idSecao' => 'required|exists:secao,id',
+            'idUniMedida' => 'required|exists:unidade_medidas,id',
+            'nome' => 'required|string|max:80',
+            'descricaoProduto' => 'required|string|max:255',
+            'estoque' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'preco' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'produto_destaque' => 'required|boolean',
+            'imagem' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+                
+        $infoProd = $request->except('imagem');
 
-        $novoProduto = new Produto;
-        $novoProduto->nome = $nomeProd;
-        $novoProduto->descricaoProduto = $descricaoProduto;
-        $novoProduto->idSecao = $idSecao;
-        $novoProduto->unidadeMedida = $unidade;
-        $novoProduto->estoque = $estoque;
-        $novoProduto->preco = $preco;
-        if($destaque == "SIM"){
-            $novoProduto->produto_destaque = 1;
-        }
-        $novoProduto->save();
+        $produto = Produto::create($infoProd);
 
-        $idProduto = $novoProduto->id;
-        if($request->hasFile('imagem')){
-            $imagemUrl = Cloudinary::upload($request->file('imagem')->getPathname())->getSecurePath();
+        $imagemUrl = Cloudinary::upload($request->file('imagem')->getRealPath(),[
+                'folder' => 'img-prod-ed'
+            ])->getSecurePath();
         
-            $novaImagem = new Imagens;
-            $novaImagem->idProduto = $idProduto;
-            $novaImagem->linkImagem = $imagemUrl;
-            $novaImagem->save();
-        }
+        Imagens::create([
+            "idProduto" => $produto->id,
+            "urlImagem" => $imagemUrl,
+        ]);
 
         return redirect('/adm/produtos');
     }
