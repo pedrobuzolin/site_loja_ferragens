@@ -14,6 +14,21 @@ class SecaoController extends Controller
         return view('secoes.index', compact('secao'));
     }
 
+    public function buscarSecao(Request $request)
+    {
+        $ativo = $request->input("secao_ativo");
+        $busca = $request->input("buscar");
+        if($ativo == "1"){
+            $secao = Secao::where("secao_ativo", "1")->whereRaw("LOWER(nomeSecao) LIKE ?", ['%' . strtolower($busca) . '%'])->get();
+        }
+        else
+        {
+            $secao = Secao::all()->where("secao_ativo", "0");
+        }
+
+        return view('secoes.index', compact('secao'));
+    }
+
     public function incluir()
     {
         return view('secoes.inserir');
@@ -21,12 +36,11 @@ class SecaoController extends Controller
 
     public function incluirSecao(Request $request)
     {
-        $nomeSecao = $request->input("nomeSecao");
+        $request->validate([
+            'nomeSecao' => 'required|string|max:30',
+        ]);
 
-        $novaSecao = new Secao;
-        $novaSecao->nomeSecao = $nomeSecao;
-        $novaSecao->save();
-
+        Secao::create($request->all());
         return redirect('/adm/secoes');
     }
 
@@ -38,19 +52,23 @@ class SecaoController extends Controller
 
     public function executarAlteracao(Request $request)
     {
-        $nomeSecao = $request->input("nomeSecao");
-        $idSecao = $request->input("id");
+        $request->validate([
+            'id' => 'required|exists:secao,id',
+            'nomeSecao' => 'required|string|max:30',
+        ]);
 
-        $secao = Secao::where("id", $idSecao)->first();
-        $secao->nomeSecao = $nomeSecao;
-        $secao->save();
+        $idSecao = $request['id'];
+        $secao = Secao::find($idSecao);
+        $secao->update([
+            'nomeSecao' => $request['nomeSecao'],
+            ]);
 
         return redirect('/adm/secoes');
     }
 
     public function excluir($id)
     {
-        $secao = Secao::where("id", $id)->first();
+        $secao = Secao::find($id);
         $secao->secao_ativo = 0;
         $secao->save();
         return redirect('/adm/secoes');

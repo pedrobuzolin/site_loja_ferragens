@@ -37,10 +37,11 @@ Route::get('/adm', function(){
 
 //Secao
 Route::get('/adm/secoes', [SecaoController::class, 'index'])->name('secoes');
+Route::post('/adm/secoes', [SecaoController::class, 'buscarSecao'])->name('secoes_busca');
 Route::get('/adm/secoes/novo', [SecaoController::class, 'incluir'])->name('secoes_novo');
 Route::post('/adm/secoes/novo', [SecaoController::class, 'incluirSecao'])->name('secoes_novo');
 Route::get('/adm/secoes/alterar/{id}', [SecaoController::class, 'buscarAlteracao'])->name('secoes_alterar');
-Route::post('/adm/secoes/alterar', [SecaoController::class, 'executarAlteracao'])->name('secoes_alt');;
+Route::post('/adm/secoes/alterar/', [SecaoController::class, 'executarAlteracao'])->name('secoes_alt');;
 Route::get('/adm/secoes/excluir/{id}', [SecaoController::class, 'excluir'])->name('secoes_excluir');
 
 //Unidades de Medida
