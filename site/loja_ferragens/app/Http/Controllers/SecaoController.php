@@ -55,13 +55,16 @@ class SecaoController extends Controller
         $request->validate([
             'id' => 'required|exists:secao,id',
             'nomeSecao' => 'required|string|max:30',
+            'secao_ativo' => 'required|boolean',
         ]);
 
         $idSecao = $request['id'];
+        $nomeSecao = $request['nomeSecao'];
+        $secao_ativo = $request['secao_ativo'];
         $secao = Secao::find($idSecao);
-        $secao->update([
-            'nomeSecao' => $request['nomeSecao'],
-            ]);
+        $secao->nomeSecao = $nomeSecao;
+        $secao->secao_ativo = $secao_ativo;
+        $secao->save();
 
         return redirect('/adm/secoes');
     }
