@@ -56,6 +56,7 @@ Route::get('/adm/unidades-medidas/excluir/{id}', [UnidadesMedidasController::cla
 
 //Produtos
 Route::get('/adm/produtos', [ProdutoController::class, 'index'])->name('produtos');
+Route::post('/adm/produtos', [ProdutoController::class, 'buscarProduto'])->name('produtos_busca');
 Route::get('/adm/produtos/novo', [ProdutoController::class, 'inserir'])->name('produtos_novo');
 Route::post('/adm/produtos/novo', [ProdutoController::class, 'incluirProduto'])->name('produtos_add');
 Route::get('/adm/produtos/alterar/{id}', [ProdutoController::class, 'alterar'])->name('produtos_alterar');

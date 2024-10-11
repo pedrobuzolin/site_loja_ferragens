@@ -7,12 +7,29 @@
                     <div class="col">
                         <h1 class="card-title">Lista de Produtos</h1>
                     </div>
-                    <div class=" col-6">
-                        <input class="form-control" type="text" placeholder="Busque um produto" />
-                    </div>
-                    <div class="col">
-                        <a class="btn btn-warning">Buscar</a>
-                    </div>
+                    <form class="row mb-3" action="{{ route('produtos_busca') }}" method="POST">
+                        @csrf
+                        <div class="col-4">
+                            <label class="form-label">Ativo</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="produto_ativo" id="produto_ativo1"
+                                    value="1" checked>
+                                <label class="form-check-label" for="inlineRadio1">SIM</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="produto_ativo" id="produto_ativo2"
+                                    value="0">
+                                <label class="form-check-label" for="inlineRadio2">NÃO</label>
+                            </div>
+                        </div>
+                        <div class=" col-6 mt-3">
+                            <input class="form-control" type="text" name="buscar" id="buscar"
+                                placeholder="Busque um produto" />
+                        </div>
+                        <div class="col-2 mt-3">
+                            <button type="submit" class="btn btn-warning">Buscar</a>
+                        </div>
+                    </form>
                 </div>
                 <div>
                     <a class="btn btn-success" href="{{route('produtos_novo')}}">Novo</a>
@@ -44,10 +61,10 @@
                                 <td class="text-center fw-medium">{{$linha->estoque}}</td>
                                 <td class="text-center fw-medium">{{$linha->preco}}</td>
                                 <td class="text-center fw-medium">                            
-                                    @if($linha->produto_destaque == 0)
-                                        NÃO
-                                    @else
+                                    @if($linha->produto_destaque == 1)
                                         SIM
+                                    @else
+                                        NÃO
                                     @endif
                                 </td>
                                 <td class="text-center fw-medium">

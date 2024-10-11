@@ -20,6 +20,7 @@ class Produto extends Model
         'preco',
         'estoque',
         'produto_destaque',
+        'produto_ativo',
     ];
 
     public function imagens() : HasMany
