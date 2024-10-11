@@ -38,6 +38,7 @@ class UnidadesMedidasController extends Controller
     {
         $request->validate([
             'unidadeMedida' => 'required|string|max:10',
+            'uni_ativo' => 'required|boolean',
         ]);
 
         UnidadeMedidas::create($request->all());

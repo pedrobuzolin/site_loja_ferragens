@@ -5,6 +5,7 @@
             <div class="card-body">
                 <form method="POST" action="{{route('uni_add')}}" class="row g-3">
                     @csrf
+                    <input type="hidden" name="uni_ativo" id="uni_ativo" value="1">
                     <div class="col-12">
                         <label for="unidadeMedida" class="form-label">Unidade Medida</label>
                         <input type="text" class="form-control" name="unidadeMedida" id="unidadeMedida" required>

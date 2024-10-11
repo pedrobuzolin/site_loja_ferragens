@@ -38,6 +38,7 @@ class SecaoController extends Controller
     {
         $request->validate([
             'nomeSecao' => 'required|string|max:30',
+            'secao_ativo' => 'required|boolean',
         ]);
 
         Secao::create($request->all());

@@ -12,6 +12,7 @@ class Secao extends Model
     
     protected $fillable = [
         'nomeSecao',
+        'secao_ativo',
     ];
 
     public function produtos() : HasMany

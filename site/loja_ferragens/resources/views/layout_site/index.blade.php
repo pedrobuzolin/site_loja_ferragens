@@ -77,10 +77,13 @@
                             <a href="/quemSomos" class="nav-item nav-link">Quem Somos</a>
                             <a href="/contato" class="nav-item nav-link">Contato</a>
                         </div>
-                        <div class="d-flex m-3 me-0">
-                            <input class="me-4 input-pesquisa" placeholder="Busque um produto"/>
-                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-dark-blue me-4"><i class="fas fa-search text-white"></i></button>    
-                        </div>
+                        <form method="POST" action="{{route('pesquisa_exibir')}}">
+                            @csrf
+                            <div class="d-flex m-3 me-0">
+                                <input name="buscar" id="buscar" type="text" class="me-4 input-pesquisa" placeholder="Busque um produto"/>
+                                <button type="submit" class="btn-search btn border border-secondary btn-md-square rounded-circle bg-dark-blue me-4"><i class="fas fa-search text-white"></i></button>    
+                            </div>
+                        </form>
                         <div class="d-flex  m-3 me-0">
                             <a href="/carrinho" class="position-relative me-4 my-auto">
                                 <i class="fas fa-shopping-cart fa-2x"></i>

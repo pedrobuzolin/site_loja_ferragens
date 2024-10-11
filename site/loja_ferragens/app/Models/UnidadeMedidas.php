@@ -12,6 +12,7 @@ class UnidadeMedidas extends Model
     
     protected $fillable = [
         'unidadeMedida',
+        'uni_ativo',
     ];
 
     public function produtos() : HasMany

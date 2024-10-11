@@ -100,7 +100,7 @@ class ProdutoController extends Controller
 
         $id = $request['id'];
         $produto = Produto::find($id);
-        $produto->update($infoProd);
+        
  
         if ($request->hasFile("imagem")) {
             $novaImagem = Cloudinary::upload($request->file('imagem')->getRealPath(),[
@@ -108,9 +108,10 @@ class ProdutoController extends Controller
             ])->getSecurePath();
 
             $imagem = $produto->imagens->first();
-            $imagem->update($novaImagem);
+            $imagem->urlImagem = $novaImagem;
+            $imagem->save();
         }
-
+        $produto->update($infoProd);
         return redirect('/adm/produtos');
     }
 
@@ -137,5 +138,13 @@ class ProdutoController extends Controller
         $produtos = Produto::with('imagens')->where("idSecao", $id)->where("produto_ativo", "1")->get();
         $carrinho = session('carrinho', []);
         return view('site.secoes', compact('produtos', 'secao'));
+    }
+
+    public function exibirPesquisa(Request $request)
+    {
+        $busca = $request->input("buscar");
+        $produtos = Produto::where("produto_ativo", "1")->whereRaw("LOWER(nome) LIKE ?", ['%' . strtolower($busca) . '%'])->get();
+        $carrinho = session('carrinho', []);
+        return view('site.pesquisa', compact('produtos', 'busca'));
     }
 }

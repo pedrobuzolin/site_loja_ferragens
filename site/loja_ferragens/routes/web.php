@@ -12,6 +12,7 @@ use App\Http\Controllers\CarrinhoController;
 Route::get('/', [ProdutoController::class, 'exibirDestaques']);
 
 Route::get('/secoes/{id}', [ProdutoController::class, 'exibirProdutos'])->name('secoes_exibir');
+Route::post('/pesquisa', [ProdutoController::class, 'exibirPesquisa'])->name('pesquisa_exibir');
 
 Route::get('/login', function(){
     return view('site.login');
