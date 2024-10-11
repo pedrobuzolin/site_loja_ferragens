@@ -57,14 +57,12 @@ class UnidadesMedidasController extends Controller
             'unidadeMedida' => 'required|string|max:10',
             'uni_ativo' => 'required|boolean',
         ]);
+
+        $infoUni = $request->except('id');
         $idUnidade = $request['id'];
-        $unidadeMedida = $request['unidadeMedida'];
-        $uni_ativo = $request['uni_ativo'];
 
         $unidade_medidas = UnidadeMedidas::find($idUnidade);
-        $unidade_medidas->unidadeMedida = $unidadeMedida;
-        $unidade_medidas->uni_ativo = $uni_ativo;
-        $unidade_medidas->save();
+        $unidade_medidas->update($infoUni);
 
         return redirect('/adm/unidades-medidas');
     }
