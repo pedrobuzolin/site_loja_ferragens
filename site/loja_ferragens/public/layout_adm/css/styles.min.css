@@ -10,6 +10,7 @@
 :root,
 [data-bs-theme=light] {
   --bs-dark-blue: #053b50;
+  --bs-blue-hover: #176b87;
   --bs-blue: #2952ff;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -352,7 +353,7 @@ sup {
 }
 
 a {
-  color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+  color: var(--bs-dark-blue);
   text-decoration: underline;
 }
 a:hover {
@@ -8713,7 +8714,7 @@ textarea.form-control-lg {
 
 .border-primary {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-primary-rgb), var(--bs-border-opacity)) !important;
+  border-color: var(--bs-blue-hover) !important;
 }
 
 .border-secondary {
@@ -16594,10 +16595,10 @@ textarea.form-control-lg {
 }
 .sidebar-nav ul .sidebar-item .sidebar-link:hover {
   background-color: rgba(41, 82, 255, 0.1);
-  color: #2952ff;
+  color: var(--bs-blue-hover);
 }
 .sidebar-nav ul .sidebar-item .sidebar-link:hover.has-arrow::after {
-  border-color: #2952ff;
+  border-color: var(--bs-blue-hover);
 }
 .sidebar-nav ul .sidebar-item .sidebar-link.active:hover.has-arrow::after {
   border-color: #fff;
@@ -16607,7 +16608,7 @@ textarea.form-control-lg {
 }
 .sidebar-nav ul .sidebar-item.selected > .sidebar-link.active, .sidebar-nav ul .sidebar-item.selected > .sidebar-link,
 .sidebar-nav ul .sidebar-item > .sidebar-link.active {
-  background-color: #2952ff;
+  background-color: var(--bs-dark-blue);
   color: #fff;
 }
 .sidebar-nav .sidebar-list .sidebar-list-item {
@@ -16863,7 +16864,7 @@ a {
 }
 
 a:hover {
-  color: #2952ff;
+  color: var(--bs-blue-hover);;
 }
 
 ul {

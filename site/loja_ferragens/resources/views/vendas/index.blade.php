@@ -36,7 +36,7 @@
                                 <td class="text-center fw-medium">Crédito</td>
                                 <td class="text-center fw-medium">Entrega</td>
                                 <td class="text-center fw-medium">
-                                    <button class='botao_mais btn btn-primary' data-id='1'><iconify-icon icon="fluent-emoji-high-contrast:plus"></iconify-icon></button>
+                                    <a href="javascript:void(0);" class="botao_mais" data-id='1'><iconify-icon icon="fluent-emoji-high-contrast:plus"></iconify-icon></a>
                                 </td>
                             </tr>
                             <tr class='venda1' style='display: none;'>
