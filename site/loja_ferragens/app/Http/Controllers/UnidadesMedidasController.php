@@ -14,6 +14,21 @@ class UnidadesMedidasController extends Controller
         return view('unidadeMedidas.index', compact('unidadeMedidas'));
     }
 
+    public function buscarUnidade(Request $request)
+    {
+        $ativo = $request->input("uni_ativo");
+        $busca = $request->input("buscar");
+        if($ativo == "1"){
+            $unidadeMedidas = UnidadeMedidas::where("uni_ativo", "1")->whereRaw("LOWER(unidadeMedida) LIKE ?", ['%' . strtolower($busca) . '%'])->get();
+        }
+        else
+        {
+            $unidadeMedidas = UnidadeMedidas::all()->where("uni_ativo", "0");
+        }
+
+        return view('unidadeMedidas.index', compact('unidadeMedidas'));
+    }
+
     public function incluir()
     {
         return view('unidadeMedidas.inserir');
@@ -31,27 +46,34 @@ class UnidadesMedidasController extends Controller
 
     public function buscarAlteracao($id)
     {
-        $secao = Secao::where("id", $id)->first();
-        return view('secoes.alterar', compact('secao'));
+        $unidadeMedidas = UnidadeMedidas::where("id", $id)->first();
+        return view('unidadeMedidas.alterar', compact('unidadeMedidas'));
     }
 
     public function executarAlteracao(Request $request)
     {
-        $nomeSecao = $request->input("nomeSecao");
-        $idSecao = $request->input("id");
+        $request->validate([
+            'id' => 'required|exists:unidade_medidas,id',
+            'unidadeMedida' => 'required|string|max:10',
+            'uni_ativo' => 'required|boolean',
+        ]);
+        $idUnidade = $request['id'];
+        $unidadeMedida = $request['unidadeMedida'];
+        $uni_ativo = $request['uni_ativo'];
 
-        $secao = Secao::where("id", $idSecao)->first();
-        $secao->nomeSecao = $nomeSecao;
-        $secao->save();
+        $unidade_medidas = UnidadeMedidas::find($idUnidade);
+        $unidade_medidas->unidadeMedida = $unidadeMedida;
+        $unidade_medidas->uni_ativo = $uni_ativo;
+        $unidade_medidas->save();
 
-        return redirect('/adm/secoes');
+        return redirect('/adm/unidades-medidas');
     }
 
     public function excluir($id)
     {
-        $secao = Secao::where("id", $id)->first();
-        $secao->secao_ativo = 0;
-        $secao->save();
-        return redirect('/adm/secoes');
+        $unidadeMedidas = UnidadeMedidas::where("id", $id)->first();
+        $unidadeMedidas->uni_ativo = 0;
+        $unidadeMedidas->save();
+        return redirect('/adm/unidades-medidas');
     }
 }

@@ -46,6 +46,7 @@ Route::get('/adm/secoes/excluir/{id}', [SecaoController::class, 'excluir'])->nam
 
 //Unidades de Medida
 Route::get('/adm/unidades-medidas', [UnidadesMedidasController::class, 'index'])->name('un-medidas');
+Route::post('/adm/unidades-medidas', [UnidadesMedidasController::class, 'buscarUnidade'])->name('uni_busca');
 Route::get('/adm/unidades-medidas/novo', [UnidadesMedidasController::class, 'incluir'])->name('uni_novo');
 Route::post('/adm/unidades-medidas/novo', [UnidadesMedidasController::class, 'incluirUnidade'])->name('uni_add');
 Route::get('/adm/unidades-medidas/alterar/{id}', [UnidadesMedidasController::class, 'buscarAlteracao'])->name('uni_alterar');

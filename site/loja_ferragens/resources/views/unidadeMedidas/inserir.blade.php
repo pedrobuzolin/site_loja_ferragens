@@ -9,7 +9,7 @@
                         <label for="unidadeMedida" class="form-label">Unidade Medida</label>
                         <input type="text" class="form-control" name="unidadeMedida" id="unidadeMedida" required>
                     </div>
-                    <div class="d-grid gap-2 col-3 mx-auto">
+                    <div class="d-flex gap-2 col-3 mx-auto">
                         <button type="submit" class="btn btn-primary">Salvar</button>
                         <a href="{{route('un-medidas')}}" class="btn btn-danger">Cancelar</a>
                     </div>
