@@ -19,11 +19,11 @@ Route::get('/contato', function(){
 });
 
 Route::get('/login', function(){
-    return view('site.login');
+    return view('login.login');
 });
 
 Route::get('/criarConta', function(){
-    return view('site.criarConta');
+    return view('login.criarConta');
 });
 
 Route::get('/carrinho', [CarrinhoController::class, 'index']);

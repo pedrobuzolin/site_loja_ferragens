@@ -1,5 +1,5 @@
 @extends("layout_adm.index")
-@section("conteudo")
+@section("conteudo_adm")
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">

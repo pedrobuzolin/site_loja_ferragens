@@ -1,13 +1,5 @@
-<!doctype html>
-<html lang="pt-br">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Casa EDLIN</title>
-  <link rel="shortcut icon" type="image/png" href="/layout_adm/images/logos/icone.ico" />
-  <link rel="stylesheet" href="/layout_adm/css/styles.min.css" />
-</head>
+@extends("layout_adm.topo_rodape")
+@section("conteudo")
 
 <body>
   <!--  Body Wrapper -->
@@ -125,17 +117,7 @@
       <!--  Header End -->
       <div class="container-fluid">
         <div class="row">
-            @yield("conteudo")
+            @yield("conteudo_adm")
         </div>
       </div>
-  <script src="/layout_adm/libs/jquery/dist/jquery.min.js"></script>
-  <script src="/layout_adm/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/layout_adm/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="/layout_adm/libs/simplebar/dist/simplebar.js"></script>
-  <script src="/layout_adm/js/sidebarmenu.js"></script>
-  <script src="/layout_adm/js/app.min.js"></script>
-  <script src="/layout_adm/js/dashboard.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-</body>
-
-</html>
+@endsection
