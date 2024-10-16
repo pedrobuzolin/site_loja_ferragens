@@ -7,7 +7,7 @@ $(document).ready(function(){
             alert('Por favor, insira uma quantidade válida.');
             return;
         }
-        console.log(idProd, quantidade);
+
         $.ajax({
             url:'/adicionar-produto',
             type: 'POST',

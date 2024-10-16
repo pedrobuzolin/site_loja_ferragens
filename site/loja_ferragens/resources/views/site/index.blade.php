@@ -43,7 +43,7 @@
                                                 <h4>{{ $linha->nome }}</h4>
                                                 <p>{{ $linha->descricaoProduto }}</p>
                                                 <div class="d-grid justify-content-between flex-lg-wrap produto">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">R${{ $linha->preco }}/
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ {{ number_format($linha->preco, '2', ',', '.') }}/
                                                         {{ $linha->unidadeMedida->unidadeMedida }}</p>
                                                     <input type="number" name="quantidade" id="quantidade"
                                                     class="form-control col-2 mt-2 mb-2"/>
