@@ -4,9 +4,9 @@
 
     <!-- Cart Page Start -->
     <div class="container-fluid py-5">
-        <div class="container py-5 mt-5">
+        <div class="container py-5 mt-5 mb-4">
             @if (!session('carrinho'))
-                <div class="card w-100 mt-5 text-center">
+                <div class="card w-100 mt-5 mb-5 text-center">
                     <div class="card-body">
                         <i class="fas fa-shopping-cart fa-10x"></i>
                         <h5 class="card-title mt-2">Carrinho Vázio</h5>
@@ -38,7 +38,7 @@
                                         <p class="mb-0 mt-4">{{ $produto['nome'] }}</p>
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">{{ $produto['preco'] }}</p>
+                                        <p class="mb-0 mt-4">R$ {{ number_format($produto['preco'], '2', ',', '.') }}</p>
                                     </td>
                                     <td>
                                         <div class="input-group quantity mt-4" style="width: 100px;">
@@ -59,7 +59,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">{{ $produto['subtotal'] }}</p>
+                                        <p class="mb-0 mt-4">R$ {{ number_format($produto['subtotal'], 2, ',', '.') }}</p>
                                     </td>
                                     <td>
                                         <a href="{{ route('rm-prod', ['id' => $produto['id']]) }}"
@@ -80,11 +80,12 @@
                             </div>
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                 <h5 class="mb-0 ps-4 me-4">Total</h5>
-                                <p class="mb-0 pe-4">{{ $total }}</p>
+                                <p class="mb-0 pe-4">R$ {{ number_format($total, '2', ',', '.') }}</p>
                             </div>
                             <a href="#"
                                 class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">Ir
-                                para Pagamento</a>
+                                para Pagamento
+                            </a>
                         </div>
                     </div>
                 </div>
