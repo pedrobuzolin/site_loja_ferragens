@@ -62,7 +62,7 @@
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-dark-blue" id="navbarCollapse">
-                        <div class="navbar-nav mx-auto">
+                        <div class="navbar-nav">
                             <a href="/" class="nav-item nav-link active">Home</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Produtos</a>
@@ -74,15 +74,14 @@
 
                                 </div>
                             </div>
-                            <a href="/quemSomos" class="nav-item nav-link">Quem Somos</a>
                             <a href="/contato" class="nav-item nav-link">Contato</a>
                         </div>
-                        <form method="POST" action="{{route('pesquisa_exibir')}}">
+                        <form class="d-flex me-4 col-7" method="POST" action="{{route('pesquisa_exibir')}}">
                             @csrf
-                            <div class="d-flex m-3 me-0">
-                                <input name="buscar" id="buscar" type="text" class="me-4 input-pesquisa" placeholder="Busque um produto"/>
+    
+                                <input name="buscar" id="buscar" type="search" class="ms-3 me-2 form-control" placeholder="Busque um produto"/>
                                 <button type="submit" class="btn-search btn border border-secondary btn-md-square rounded-circle bg-dark-blue me-4"><i class="fas fa-search text-white"></i></button>    
-                            </div>
+
                         </form>
                         <div class="d-flex  m-3 me-0">
                             <a href="/carrinho" class="position-relative me-4 my-auto">

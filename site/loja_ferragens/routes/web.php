@@ -14,6 +14,10 @@ Route::get('/', [ProdutoController::class, 'exibirDestaques']);
 Route::get('/secoes/{id}', [ProdutoController::class, 'exibirProdutos'])->name('secoes_exibir');
 Route::post('/pesquisa', [ProdutoController::class, 'exibirPesquisa'])->name('pesquisa_exibir');
 
+Route::get('/contato', function(){
+    return view('site.contato');
+});
+
 Route::get('/login', function(){
     return view('site.login');
 });
