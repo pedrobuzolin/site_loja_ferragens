@@ -22,58 +22,22 @@
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
-              <span class="hide-menu">Cadastros</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('usuarios')}}" aria-expanded="false">
-                <span>
-                    <iconify-icon icon="material-symbols:person" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu">Usuários</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('produtos')}}" aria-expanded="false">
-                <span>
-                    <iconify-icon icon="icon-park-outline:ad-product" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu">Produtos</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('secoes')}}" aria-expanded="false">
-                <span>
-                    <iconify-icon icon="icon-park-outline:ad-product" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu">Seções</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('un-medidas')}}" aria-expanded="false">
-                <span>
-                    <iconify-icon icon="icon-park-outline:ad-product" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu">Unidades de Medidas</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
               <span class="hide-menu">Consultas</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('clientes')}}" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('minha-conta')}}" aria-expanded="false">
                 <span>
                     <iconify-icon icon="material-symbols:person" class="fs-6"></iconify-icon>
                 </span>
-                <span class="hide-menu">Clientes</span>
+                <span class="hide-menu">Minha Conta</span>
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('vendas')}}" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('compras')}}" aria-expanded="false">
                 <span>
                     <iconify-icon icon="mdi:cart-sale" class="fs-6"></iconify-icon>
                 </span>
-                <span class="hide-menu">Vendas</span>
+                <span class="hide-menu">Compras</span>
               </a>
             </li>
           </ul>
@@ -101,8 +65,8 @@
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">Minha Conta</p>
                     </a>
-                    <a href="{{route('logout')}}" class="mx-3 mt-2 d-block">
-                      <form action="{{ route('logout') }}" method="POST">
+                    <a href="{{route('logout_cliente')}}" class="mx-3 mt-2 d-block">
+                      <form action="{{ route('logout_cliente') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-primary mx-3 mt-2 d-block">Sair</button>
                       </form>
@@ -117,7 +81,7 @@
       <!--  Header End -->
       <div class="container-fluid">
         <div class="row">
-            @yield("conteudo_adm")
+            @yield("conteudo_cliente")
         </div>
       </div>
 @endsection

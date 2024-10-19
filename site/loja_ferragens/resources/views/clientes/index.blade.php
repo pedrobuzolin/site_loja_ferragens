@@ -24,14 +24,20 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr>
-                                <th class="text-center ps-0 fw-medium">1</th>
-                                <td class="text-center fw-medium">Pedro</td>
-                                <td class="text-center fw-medium">
-                                    <a href="/clientes-alterar"><iconify-icon icon="ooui:recent-changes-ltr" width="1.2em" height="1.2em"></iconify-icon></a>
-                                    <a href="/clientes-excluir"><iconify-icon icon="material-symbols:delete" width="1.2em" height="1.2em"></iconify-icon></a>
-                                </td>
-                            </tr>
+                            @foreach ($clientes as $linha)
+                                <tr>
+                                    <th class="text-center ps-0 fw-medium">{{ $linha->id }}</th>
+                                    <td class="text-center fw-medium">{{ $linha->name }}</td>
+                                    <td class="text-center fw-medium">
+                                        <a href="{{ route('secoes_alterar', ['id' => $linha->id]) }}"><iconify-icon
+                                                icon="ooui:recent-changes-ltr" width="1.2em"
+                                                height="1.2em"></iconify-icon></a>
+                                        <a href="{{ route('secoes_excluir', ['id' => $linha->id]) }}"><iconify-icon
+                                                icon="material-symbols:delete" width="1.2em"
+                                                height="1.2em"></iconify-icon></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

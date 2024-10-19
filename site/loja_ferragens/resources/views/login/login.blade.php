@@ -13,7 +13,7 @@
                                     <img src="/layout_adm/images/logos/logo_preta.svg" alt=""
                                         style="width: 100px; height: 100px;">
                                 </a>
-                                <form>
+                                <form action="{{route('vld_login')}}" method="POST">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Usuário</label>
@@ -27,10 +27,10 @@
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <a class="text-primary fw-bold" href="#">Esqueceu a Senha?</a>
                                     </div>
-                                    <a href="#" class="btn btn-primary w-100 py-8 fs-4 mb-4">Entrar</a>
+                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4">Entrar</button>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <p class="fs-4 mb-0 fw-bold">Novo em Casa Edlin?</p>
-                                        <a class="text-primary fw-bold ms-2" href="/criarConta">Criar Conta</a>
+                                        <a class="text-primary fw-bold ms-2" href="{{route('registrar')}}">Criar Conta</a>
                                     </div>
                                 </form>
                             </div>

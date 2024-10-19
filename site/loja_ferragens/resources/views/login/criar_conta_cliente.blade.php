@@ -14,11 +14,11 @@
                                         style="width: 100px; height: 100px;">
                                 </a>
                                 <h4>Cadastro de Cliente</h4>
-                                <form method="post">
+                                <form method="POST" action="{{route('add_cli')}}">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="nome_cliente" class="form-label">Nome</label>
-                                        <input type="text" class="form-control" name="nome_cliente" id="nome_cliente"
+                                        <label for="name" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" name="name" id="name"
                                             aria-describedby="nome">
                                     </div>
                                     <div class="mb-3">
@@ -30,9 +30,14 @@
                                         <label for="password" class="form-label">Senha</label>
                                         <input type="password" class="form-control" name="password" id="password">
                                     </div>
+                                    <div class="mb-4">
+                                        <label for="password_confirmation" class="form-label">Confirme a Senha</label>
+                                        <input type="password" class="form-control" name="password_confirmation"
+                                            id="password_confirmation">
+                                    </div>
                                     <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4">Criar
                                         Conta</button>
-                                    <a href="login" class="btn btn-danger w-100 py-8 fs-4 mb-4">Voltar</a>
+                                    <a href="{{route('login')}}" class="btn btn-danger w-100 py-8 fs-4 mb-4">Voltar</a>
                                 </form>
                             </div>
                         </div>
