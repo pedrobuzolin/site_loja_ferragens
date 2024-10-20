@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {    
@@ -60,6 +61,45 @@ class AuthController extends Controller
         return redirect()->route('usuarios')->with('success', 'Registro concluído com sucesso!');
     }
 
+    public function buscarAlteracaoAdm($id)
+    {
+        $usuario = User::find($id);
+        return view("usuarios.alterar_adm", compact("usuario"));
+    }
+
+    public function alterarAdministrador(Request $request)
+    {
+        $validatedData = $request->validate([
+            'id' => 'required|exists:users,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $infoAdmin = $request->except('id');
+        $id = $validatedData['id'];
+        $admin = User::find($id);
+        $admin->update($infoAdmin);
+
+        Auth::login($admin);
+
+        return redirect()->route('usuarios')->with('success', 'Registro concluído com sucesso!');
+    }
+
+    public function desativar($id)
+    {
+        $usuario = User::find($id);
+        $usuario->active = 0;
+        $usuario->save();
+        if($usuario->access_level == "0"){
+            return redirect()->route("usuarios");
+        }
+        else if($usuario->access_level == "1"){
+            return redirect()->route("clientes");
+        }
+
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -71,6 +111,11 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             $user = Auth::user();
+
+            if($user->active !== 1){
+                Auth::logout();
+                return back()->withErrors(['email'=> 'Sua conta foi desativada']);
+            }
 
             if ($user->access_level === '0') {
                 return redirect()->intended('/adm')->with('success', 'Login bem-sucedido! Bem-vindo, Admin.');

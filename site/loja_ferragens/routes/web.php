@@ -60,6 +60,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/adm', function(){
         return view('layout_adm.index');
     });
+
     Route::post('/adm/logout', [AuthController::class, 'logout'])->name('logout');
     
     //Usuários
@@ -67,9 +68,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/adm/usuarios', [UserAdminController::class, 'buscarUsuario'])->name('user_busca');
     Route::get('/adm/usuarios/novo', [AuthController::class, 'formularioCadastroAdministrador'])->name('user_novo');
     Route::post('/adm/usuarios/novo', [AuthController::class, 'registrarAdministrador'])->name('user_add');
-    Route::get('/adm/usuarios/alterar/{id}', [SecaoController::class, 'buscarAlteracao'])->name('user_alt');
-    Route::post('/adm/usuarios/alterar/', [SecaoController::class, 'executarAlteracao'])->name('user_alte');;
-    Route::get('/adm/usuarios/excluir/{id}', [SecaoController::class, 'excluir'])->name('user_del');
+    Route::get('/adm/usuarios/alterar/{id}', [AuthController::class, 'buscarAlteracaoAdm'])->name('user_alt');
+    Route::post('/adm/usuarios/alterar/', [AuthController::class, 'alterarAdministrador'])->name('user_alte');;
+    Route::get('/adm/usuarios/excluir/{id}', [AuthController::class, 'desativar'])->name('user_del');
     
     //Secao
     Route::get('/adm/secoes', [SecaoController::class, 'index'])->name('secoes');

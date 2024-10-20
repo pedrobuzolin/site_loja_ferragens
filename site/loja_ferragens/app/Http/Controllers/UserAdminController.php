@@ -9,7 +9,7 @@ class UserAdminController extends Controller
 {
     public function index()
     {
-        $usuario = User::all()->where("access_level", "0");
+        $usuario = User::all()->where("access_level", "0")->where("active", 1);
 
         return view('usuarios.index', compact('usuario'));
     }
