@@ -16,12 +16,12 @@
                     <input type="email" class="form-control" name="email" id="email" value="{{$usuario->email}}" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-4">
-                    <label for="password" class="form-label">Senha</label>
-                    <input type="password" class="form-control" name="password" id="password" value="{{$usuario->password}}">
+                    <label for="password" class="form-label">Nova senha (deixe em branco para não alterar a senha)</label>
+                    <input type="password" class="form-control" name="password" id="password">
                 </div>
                 <div class="mb-4">
-                    <label for="password_confirmation" class="form-label">Confirme a Senha</label>
-                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" value="{{$usuario->password}}">
+                    <label for="password_confirmation" class="form-label">Confirme a Nova Senha</label>
+                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
                 </div>
                 <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4">Alterar Conta</button>
                 <a href="{{route('usuarios')}}" class="btn btn-danger w-100 py-8 fs-4 mb-4">Voltar</a>

@@ -16,7 +16,9 @@
   <script src="/layout_adm/js/sidebarmenu.js"></script>
   <script src="/layout_adm/js/app.min.js"></script>
   <script src="/layout_adm/js/dashboard.js"></script>
+   <script src="/layout_adm/js/cep.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </body>
 
 </html>

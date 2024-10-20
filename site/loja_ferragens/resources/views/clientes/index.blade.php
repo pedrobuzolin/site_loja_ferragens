@@ -27,12 +27,12 @@
                             @foreach ($clientes as $linha)
                                 <tr>
                                     <th class="text-center ps-0 fw-medium">{{ $linha->id }}</th>
-                                    <td class="text-center fw-medium">{{ $linha->name }}</td>
+                                    <td class="text-center fw-medium">{{ $linha->nome_cliente }}</td>
                                     <td class="text-center fw-medium">
-                                        <a href="{{ route('secoes_alterar', ['id' => $linha->id]) }}"><iconify-icon
+                                        <a href="{{ route('cliente_alt', ['id' => $linha->id]) }}"><iconify-icon
                                                 icon="ooui:recent-changes-ltr" width="1.2em"
                                                 height="1.2em"></iconify-icon></a>
-                                        <a href="{{ route('secoes_excluir', ['id' => $linha->id]) }}"><iconify-icon
+                                        <a href="{{ route('cliente_del', ['id' => $linha->id]) }}"><iconify-icon
                                                 icon="material-symbols:delete" width="1.2em"
                                                 height="1.2em"></iconify-icon></a>
                                     </td>

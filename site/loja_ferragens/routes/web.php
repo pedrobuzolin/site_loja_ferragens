@@ -70,7 +70,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/adm/usuarios/novo', [AuthController::class, 'registrarAdministrador'])->name('user_add');
     Route::get('/adm/usuarios/alterar/{id}', [AuthController::class, 'buscarAlteracaoAdm'])->name('user_alt');
     Route::post('/adm/usuarios/alterar/', [AuthController::class, 'alterarAdministrador'])->name('user_alte');;
-    Route::get('/adm/usuarios/excluir/{id}', [AuthController::class, 'desativar'])->name('user_del');
+    Route::get('/adm/usuarios/excluir/{id}', [AuthController::class, 'desativarAdm'])->name('user_del');
     
     //Secao
     Route::get('/adm/secoes', [SecaoController::class, 'index'])->name('secoes');
@@ -103,8 +103,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     
     //Clientes
     Route::get('/adm/clientes', [ClientesController::class, 'index'])->name('clientes');
-    Route::get('/adm/clientes-alterar', [ClientesController::class, 'alterar']);
-    Route::get('/adm/clientes-excluir', [ClientesController::class, 'excluir']);
+    Route::post('/adm/clientes', [ClientesController::class, 'buscarUsuario'])->name('cliente_busca');
+    Route::get('/adm/clientes/alterar/{id}', [AuthController::class, 'buscarAlteracaoCliente'])->name('cliente_alt');
+    Route::post('/adm/clientes/alterar/', [AuthController::class, 'alterarCliente'])->name('cliente_alte');;
+    Route::get('/adm/clientes/excluir/{id}', [AuthController::class, 'desativarCliente'])->name('cliente_del');
     
     //Vendas
     Route::get('/adm/vendas', [VendasController::class, 'index'])->name('vendas');
