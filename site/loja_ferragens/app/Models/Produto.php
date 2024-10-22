@@ -37,4 +37,9 @@ class Produto extends Model
     {
         return $this->belongsTo(UnidadeMedidas::class, 'idUniMedida');
     }
+
+    public function item_venda() : BelongsTo
+    {
+        return $this->belongsTo(ItensVendas::class, 'id_produto');
+    }
 }

@@ -18,35 +18,37 @@
                     <table class="table text-nowrap align-middle mb-0">
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0"> 
-                                <th scope="col" class="text-center ps-0">ID</th>
+                                <th scope="col" class="text-start ps-0">ID</th>
                                 <th scope="col" class="text-center">Data Venda</th>
                                 <th scope="col" class="text-center">Total</th>
                                 <th scope="col" class="text-center">Tipo de Pagamento</th>
-                                <th scope="col" class="text-center">Tipo de Entrega</th>
                                 <th scope="col" class="text-center">Mais Informações</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr>
-                                <th class="text-center ps-0 fw-medium">1</th>
-                                <td class="text-center fw-medium">22/05/2024</td>
-                                <td class="text-center fw-medium">23,99</td>
-                                <td class="text-center fw-medium">Crédito</td>
-                                <td class="text-center fw-medium">Entrega</td>
-                                <td class="text-center fw-medium">
-                                    <a href="javascript:void(0);" class="botao_mais" data-id='1'><iconify-icon icon="fluent-emoji-high-contrast:plus"></iconify-icon></a>
-                                </td>
-                            </tr>
-                            <tr class='venda1' style='display: none;'>
-                                <th scope="col" class="text-center ps-0">Descrição</th>
-                                <th scope="col" class="text-center ps-0">Quantidade</th>
-                                <th scope="col" class="text-center ps-0">Valor</th>  
-                            </tr>
-                            <tr class='venda1' style='display: none;'>
-                                <td class="text-center fw-medium">Martelo</td>
-                                <td class="text-center fw-medium">2</td>
-                                <td class="text-center fw-medium">R$ 29.99</td>
-                            </tr>
+                            @foreach ($compras as $compra)               
+                                <tr>
+                                    <th class="text-start ps-0 fw-medium">{{$compra->id}}</th>
+                                    <td class="text-center fw-medium">{{$compra->created_at}}</td>
+                                    <td class="text-center fw-medium">{{$compra->total_venda}}</td>
+                                    <td class="text-center fw-medium">{{$compra->tipo_pagamento}}</td>
+                                    <td class="text-center fw-medium">
+                                        <a href="javascript:void(0);" class="botao_mais" data-id={{$compra->id}}><iconify-icon icon="fluent-emoji-high-contrast:plus"></iconify-icon></a>
+                                    </td>
+                                </tr>
+                                <tr class='venda{{$compra->id}}' style='display: none;'>
+                                    <th scope="col" class="text-start ps-0">Descrição</th>
+                                    <th scope="col" class="text-start ps-0">Quantidade</th>
+                                    <th scope="col" class="text-start ps-0">Valor</th>  
+                                </tr>
+                                @foreach ($compra->itens as $item)
+                                    <tr class='venda{{$compra->id}}' style='display: none;'>
+                                        <td class="text-start fw-medium">{{$item->produtos->nome}}</td>
+                                        <td class="text-start fw-medium">{{$item->quantidade}}</td>
+                                        <td class="text-start fw-medium">{{$item->valor_produto}}</td>
+                                    </tr>
+                                @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
