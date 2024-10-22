@@ -9,6 +9,7 @@ class VendasController extends Controller
 {
     public function index()
     {
-        return view("vendas.index");
+        $vendas = Vendas::with('itens')->get();
+        return view('vendas.index', compact('vendas'));
     }
 }

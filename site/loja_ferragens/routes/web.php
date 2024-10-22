@@ -43,16 +43,14 @@ Route::get('/pagamento-falha', [CarrinhoController::class, 'pagamentoFalha'])->n
 Route::middleware([ClienteMiddleware::class])->group(function () {
     Route::get('/perfil', function(){
         return view('layout_cliente.index');
-    });
+    })->name('home_cliente');
     
     Route::get('/pagamento', [CarrinhoController::class, 'pagamento'])->name('pagamento');
 
     Route::post('/perfil/logout', [AuthController::class, 'logout'])->name('logout_cliente');
     
-    Route::get('/perfil/conta', function(){
-        return view('layout_cliente.index');
-    })->name('minha-conta');
-    
+    Route::get('/perfil/conta', [ClientesController::class, 'buscarInfo'])->name('minha-conta');
+    Route::post('/perfil/conta', [AuthController::class, 'alterarCliente'])->name('conta_alte');
     Route::get('/perfil/compras', [ComprasClienteController::class, 'index'])->name('compras');
 });
 
@@ -108,7 +106,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/adm/clientes', [ClientesController::class, 'index'])->name('clientes');
     Route::post('/adm/clientes', [ClientesController::class, 'buscarUsuario'])->name('cliente_busca');
     Route::get('/adm/clientes/alterar/{id}', [AuthController::class, 'buscarAlteracaoCliente'])->name('cliente_alt');
-    Route::post('/adm/clientes/alterar/', [AuthController::class, 'alterarCliente'])->name('cliente_alte');;
+    Route::post('/adm/clientes/alterar/', [AuthController::class, 'alterarCliente'])->name('cliente_alte');
     Route::get('/adm/clientes/excluir/{id}', [AuthController::class, 'desativarCliente'])->name('cliente_del');
     
     //Vendas

@@ -218,8 +218,19 @@ class CarrinhoController extends Controller
         session()->flush('carrinho', []);
         return view('site.pagamento_sucesso');
     }
-    function pagamentoFalha()
+    function pagamentoFalha(Request $request)
     {
+        $payment_id = $request->query('collection_id');
+        $payment_type = $request->query('payment_type');
+        $status = $request->query('status');
+        $external_reference = $request->query('external_reference');
+
+        $venda = Vendas::where('id', $external_reference)->first();
+        $venda->status = $status;
+        $venda->id_pagamento_mercado_pago = $payment_id;
+        $venda->tipo_pagamento = $payment_type;
+        $venda->save();
+        session()->flush('carrinho', []);
         return view('site.pagamento_falha');
     }
 }

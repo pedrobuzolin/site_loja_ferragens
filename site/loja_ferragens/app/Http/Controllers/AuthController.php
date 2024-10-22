@@ -194,8 +194,17 @@ class AuthController extends Controller
                 'cidade' => $validatedData['cidade'],
                 'uf' => $validatedData['uf'],
             ]);
+
+            if (Auth::check()) {
+                $user = Auth::user();
+                
+                if ($user->access_level === '0') {
+                    return redirect()->route('clientes')->with('success', 'Registro concluído com sucesso!');
+                } elseif ($user->access_level === '1') {
+                    return redirect()->route('home_cliente')->with('success', 'Registro concluído com sucesso!');
+                }
+            }
     
-            return redirect()->route('clientes')->with('success', 'Registro concluído com sucesso!');
         }
         catch (ValidationException $e) {
             // Exibir os erros de validação
