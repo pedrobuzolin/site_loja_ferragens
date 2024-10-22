@@ -215,7 +215,7 @@ class CarrinhoController extends Controller
         $venda->id_pagamento_mercado_pago = $payment_id;
         $venda->tipo_pagamento = $payment_type;
         $venda->save();
-        session()->flush('carrinho', []);
+        session()->forget('carrinho');
         return view('site.pagamento_sucesso');
     }
     function pagamentoFalha(Request $request)
@@ -230,7 +230,7 @@ class CarrinhoController extends Controller
         $venda->id_pagamento_mercado_pago = $payment_id;
         $venda->tipo_pagamento = $payment_type;
         $venda->save();
-        session()->flush('carrinho', []);
+        session()->forget('carrinho');
         return view('site.pagamento_falha');
     }
 }
