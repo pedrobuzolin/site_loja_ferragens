@@ -19,6 +19,9 @@ class ClienteMiddleware
         if (Auth::check() && Auth::user()->access_level == '1') {
             return $next($request);
         }
-        return redirect('/');
+
+        session(['url.intended' => $request->url()]);
+
+        return redirect()->route('login')->with('info', 'Por favor, faça login para continuar.');
     }
 }

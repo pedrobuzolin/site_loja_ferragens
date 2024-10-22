@@ -13,7 +13,17 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {    
     public function formularioLogin(){
-    return view("login.login");
+        if (Auth::check()) {
+            $user = Auth::user();
+            
+            if ($user->access_level === '0') {
+                return redirect('/adm')->with('success', 'Você já está logado como Admin.');
+            } elseif ($user->access_level === '1') {
+                return redirect('/perfil')->with('success', 'Você já está logado como Cliente.');
+            }
+        }
+    
+        return view('login.login');
     }
 
     public function formularioCadastroCliente(){
@@ -256,6 +266,6 @@ class AuthController extends Controller
         
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect('/');
     }
 }

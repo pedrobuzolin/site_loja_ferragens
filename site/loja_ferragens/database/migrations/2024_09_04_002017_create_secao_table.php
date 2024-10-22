@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('secao', function (Blueprint $table) {
             $table->id();
             $table->string('nomeSecao');
+            $table->boolean('secao_ativo')->default(1);
             $table->timestamps();
         });
     }

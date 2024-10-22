@@ -59,7 +59,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">R$ {{ number_format($produto['subtotal'], 2, ',', '.') }}</p>
+                                        <p class="mb-0 mt-4">R$ {{ number_format($produto['subtotal'], '2', ',', '.') }}</p>
                                     </td>
                                     <td>
                                         <a href="{{ route('rm-prod', ['id' => $produto['id']]) }}"
@@ -82,7 +82,7 @@
                                 <h5 class="mb-0 ps-4 me-4">Total</h5>
                                 <p class="mb-0 pe-4">R$ {{ number_format($total, '2', ',', '.') }}</p>
                             </div>
-                            <a href="#"
+                            <a href="{{route('pagamento')}}"
                                 class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">Ir
                                 para Pagamento
                             </a>

@@ -35,7 +35,8 @@ Route::get('/aumentar-quantidade/{id}', [CarrinhoController::class, 'aumentarQua
 Route::get('/diminuir-quantidade/{id}', [CarrinhoController::class, 'diminuirQuantidade'])->name('rm-qte');
 Route::get('/remover-produto/{id}', [CarrinhoController::class, 'removerProduto'])->name('rm-prod');
 Route::get('/itens-carrinho', [CarrinhoController::class, 'contarItens']);
-
+Route::get('/pagamento-sucesso', [CarrinhoController::class, 'pagamentoCerto'])->name('success');
+Route::get('/pagamento-falha', [CarrinhoController::class, 'pagamentoFalha'])->name('failure');
 // FIM ROTAS SITE
 
 // INICIO ROTAS PERFIL CLIENTE
@@ -43,6 +44,8 @@ Route::middleware([ClienteMiddleware::class])->group(function () {
     Route::get('/perfil', function(){
         return view('layout_cliente.index');
     });
+    
+    Route::get('/pagamento', [CarrinhoController::class, 'pagamento'])->name('pagamento');
 
     Route::post('/perfil/logout', [AuthController::class, 'logout'])->name('logout_cliente');
     
