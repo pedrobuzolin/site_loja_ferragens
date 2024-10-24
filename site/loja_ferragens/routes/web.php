@@ -12,6 +12,7 @@ use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\ComprasClienteController;
+use App\Http\Controllers\DashboardController;
 
 // INICIO ROTAS SITE
 Route::get('/', [ProdutoController::class, 'exibirDestaques']);
@@ -41,7 +42,7 @@ Route::get('/pagamento-falha', [CarrinhoController::class, 'pagamentoFalha'])->n
 
 // INICIO ROTAS PERFIL CLIENTE
 Route::middleware([ClienteMiddleware::class])->group(function () {
-    Route::get('/perfil', function(){
+    Route::get('/perfil',function(){
         return view('layout_cliente.index');
     })->name('home_cliente');
     
