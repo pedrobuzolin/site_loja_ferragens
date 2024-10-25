@@ -24,8 +24,8 @@ Route::get('/contato', function(){
     return view('site.contato');
 });
 
-Route::get('/criarconta', [AuthController::class, 'formularioCadastroCliente'])->name('registrar');
-Route::post('/criarconta', [AuthController::class, 'registrarCliente'])->name('add_cli');
+Route::get('/criarconta', [ClientesController::class, 'formularioCadastroCliente'])->name('registrar');
+Route::post('/criarconta', [ClientesController::class, 'registrarCliente'])->name('add_cli');
 
 Route::get('/login', [AuthController::class, 'formularioLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('vld_login');
@@ -42,16 +42,14 @@ Route::get('/pagamento-falha', [CarrinhoController::class, 'pagamentoFalha'])->n
 
 // INICIO ROTAS PERFIL CLIENTE
 Route::middleware([ClienteMiddleware::class])->group(function () {
-    Route::get('/perfil',function(){
-        return view('layout_cliente.index');
-    })->name('home_cliente');
+    Route::get('/perfil',[DashboardController::class, 'index'])->name('home_cliente');
     
     Route::get('/pagamento', [CarrinhoController::class, 'pagamento'])->name('pagamento');
 
     Route::post('/perfil/logout', [AuthController::class, 'logout'])->name('logout_cliente');
     
     Route::get('/perfil/conta', [ClientesController::class, 'buscarInfo'])->name('minha-conta');
-    Route::post('/perfil/conta', [AuthController::class, 'alterarCliente'])->name('conta_alte');
+    Route::post('/perfil/conta', [ClientesController::class, 'alterarCliente'])->name('conta_alte');
     Route::get('/perfil/compras', [ComprasClienteController::class, 'index'])->name('compras');
 });
 
@@ -59,20 +57,18 @@ Route::middleware([ClienteMiddleware::class])->group(function () {
 
 // INICIO ROTAS ADM
 Route::middleware([AdminMiddleware::class])->group(function () {
-    Route::get('/adm', function(){
-        return view('layout_adm.index');
-    });
+    Route::get('/adm', [DashboardController::class, 'index'])->name('home_adm');
 
     Route::post('/adm/logout', [AuthController::class, 'logout'])->name('logout');
     
     //Usuários
     Route::get('/adm/usuarios', [UserAdminController::class, 'index'])->name('usuarios');
     Route::post('/adm/usuarios', [UserAdminController::class, 'buscarUsuario'])->name('user_busca');
-    Route::get('/adm/usuarios/novo', [AuthController::class, 'formularioCadastroAdministrador'])->name('user_novo');
-    Route::post('/adm/usuarios/novo', [AuthController::class, 'registrarAdministrador'])->name('user_add');
-    Route::get('/adm/usuarios/alterar/{id}', [AuthController::class, 'buscarAlteracaoAdm'])->name('user_alt');
-    Route::post('/adm/usuarios/alterar/', [AuthController::class, 'alterarAdministrador'])->name('user_alte');;
-    Route::get('/adm/usuarios/excluir/{id}', [AuthController::class, 'desativarAdm'])->name('user_del');
+    Route::get('/adm/usuarios/novo', [UserAdminController::class, 'formularioCadastroAdministrador'])->name('user_novo');
+    Route::post('/adm/usuarios/novo', [UserAdminController::class, 'registrarAdministrador'])->name('user_add');
+    Route::get('/adm/usuarios/alterar/{id}', [UserAdminController::class, 'buscarAlteracaoAdm'])->name('user_alt');
+    Route::post('/adm/usuarios/alterar/', [UserAdminController::class, 'alterarAdministrador'])->name('user_alte');;
+    Route::get('/adm/usuarios/excluir/{id}', [UserAdminController::class, 'desativarAdm'])->name('user_del');
     
     //Secao
     Route::get('/adm/secoes', [SecaoController::class, 'index'])->name('secoes');
@@ -106,9 +102,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     //Clientes
     Route::get('/adm/clientes', [ClientesController::class, 'index'])->name('clientes');
     Route::post('/adm/clientes', [ClientesController::class, 'buscarUsuario'])->name('cliente_busca');
-    Route::get('/adm/clientes/alterar/{id}', [AuthController::class, 'buscarAlteracaoCliente'])->name('cliente_alt');
-    Route::post('/adm/clientes/alterar/', [AuthController::class, 'alterarCliente'])->name('cliente_alte');
-    Route::get('/adm/clientes/excluir/{id}', [AuthController::class, 'desativarCliente'])->name('cliente_del');
+    Route::get('/adm/clientes/alterar/{id}', [ClientesController::class, 'buscarAlteracaoCliente'])->name('cliente_alt');
+    Route::post('/adm/clientes/alterar/', [ClientesController::class, 'alterarCliente'])->name('cliente_alte');
+    Route::get('/adm/clientes/excluir/{id}', [ClientesController::class, 'desativarCliente'])->name('cliente_del');
     
     //Vendas
     Route::get('/adm/vendas', [VendasController::class, 'index'])->name('vendas');
