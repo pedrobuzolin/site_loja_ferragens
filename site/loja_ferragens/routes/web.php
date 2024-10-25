@@ -15,9 +15,9 @@ use App\Http\Controllers\ComprasClienteController;
 use App\Http\Controllers\DashboardController;
 
 // INICIO ROTAS SITE
-Route::get('/', [ProdutoController::class, 'exibirDestaques']);
+Route::get('/', [ProdutoController::class, 'exibirDestaques'])->name('home');
 
-Route::get('/secoes/{id}', [ProdutoController::class, 'exibirProdutos'])->name('secoes_exibir');
+Route::get('/secoes/{secao}', [ProdutoController::class, 'exibirProdutos'])->name('secoes_exibir');
 Route::post('/pesquisa', [ProdutoController::class, 'exibirPesquisa'])->name('pesquisa_exibir');
 
 Route::get('/contato', function(){

@@ -4,14 +4,8 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-4">
-                        <h1 class="card-title">Lista de Clientes</h1>
-                    </div>
-                    <div class=" col-4">
-                        <input class="form-control" type="text" placeholder="Busque um cliente" />
-                    </div>
-                    <div class="col">
-                        <a class="btn btn-warning">Buscar</a>
+                    <div class="col-6 mb-2">
+                        <h1 class="card-title">Listagem de Clientes</h1>
                     </div>
                 </div>
                 <div class="table-responsive">

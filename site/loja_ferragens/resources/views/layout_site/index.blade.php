@@ -49,9 +49,9 @@
             <div class="container topbar bg-primary d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="top-info ps-2">
-                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Avenida Coronel Clementino Gonçalves, 521, Santa Cruz do Rio Pardo - SP</a></small>
-                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">casaedlin@casaedlin.com.br</a></small>
-                        <small class="me-3"><i class="fab fa-whatsapp me-2 text-secondary"></i><a href="#" class="text-white">(14) 99835-4236</a></small>
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a class="text-white">Avenida Coronel Clementino Gonçalves, 521, Santa Cruz do Rio Pardo - SP</a></small>
+                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a class="text-white">casaedlin@casaedlin.com.br</a></small>
+                        <small class="me-3"><i class="fab fa-whatsapp me-2 text-secondary"></i><a href="https://wa.me/message/MT4TWVBLSKXDE1" class="text-white">(14) 99835-4236</a></small>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Produtos</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                     @foreach ($secoes as $linha)
-                                        <a href="{{route('secoes_exibir', ["id" => $linha->id])}}" class="dropdown-item">{{$linha->nomeSecao}}</a>
+                                        <a href="{{route('secoes_exibir', ["secao" => $linha->nomeSecao])}}" class="dropdown-item">{{$linha->nomeSecao}}</a>
                                     @endforeach
                                     
 
@@ -111,7 +111,7 @@
                         <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                         <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">PHSoftware</a> Distributed By <a class="border-bottom" href="https://themewagon.com">PHSoftware</a>
+                        Designed By <a class="border-bottom" href="#">PHSoftware</a> Distributed By <a class="border-bottom" href="#">PHSoftware</a>
                     </div>
                 </div>
             </div>
@@ -122,7 +122,7 @@
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
-
+        <a href="https://wa.me/message/MT4TWVBLSKXDE1" class="btn btn-primary border-3 border-primary rounded-circle whatsapp"><i class="fab fa-whatsapp fa-lg text-white"></i></a>  
         
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

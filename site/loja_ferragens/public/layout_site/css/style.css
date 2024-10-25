@@ -13,9 +13,16 @@
      opacity: 1;
  }
 
- .back-to-top {
-    position: fixed;
+ .back-to-top{
     right: 30px;
+ }
+
+ .whatsapp {
+    left: 30px;
+ }
+
+ .back-to-top, .whatsapp {
+    position: fixed;
     bottom: 30px;
     display: flex;
     width: 45px;
@@ -299,6 +306,10 @@
 /*** Fruits Start ***/
 .produtos{
     margin-top: 80px;
+}
+
+.produto-info{
+    height: 330px;
 }
 
 .fruite .tab-class .nav-item a.active {

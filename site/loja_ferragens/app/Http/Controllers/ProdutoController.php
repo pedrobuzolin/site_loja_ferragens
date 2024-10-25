@@ -132,9 +132,10 @@ class ProdutoController extends Controller
         return view('site.index', compact('produtos', 'secao'));
     }
 
-    public function exibirProdutos($id)
+    public function exibirProdutos($secao)
     {
-        $secao = Secao::where("id", $id)->first();
+        $secao = Secao::where("nomeSecao", $secao)->first();
+        $id = $secao->id;
         $produtos = Produto::with('imagens')->where("idSecao", $id)->where("produto_ativo", "1")->get();
         $carrinho = session('carrinho', []);
         return view('site.secoes', compact('produtos', 'secao'));

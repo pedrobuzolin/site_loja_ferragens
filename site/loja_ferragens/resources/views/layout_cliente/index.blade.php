@@ -10,7 +10,7 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-center">
-          <a href="/" class="text-nowrap logo-img">
+          <a href="{{route('home_cliente')}}" class="text-nowrap logo-img">
             <img src="/layout_adm/images/logos/logo_preta.svg" alt="" style="width: 80px; height: 80px;" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -20,6 +20,18 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
+              <span class="hide-menu">HOME</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{route('home')}}" aria-expanded="false">
+                <span>
+                    <iconify-icon icon="material-symbols:home" class="fs-6"></iconify-icon>
+                </span>
+                <span class="hide-menu">Home</span>
+              </a>
+            </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
               <span class="hide-menu">Consultas</span>
@@ -61,10 +73,6 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">Minha Conta</p>
-                    </a>
                     <a href="{{route('logout_cliente')}}" class="mx-3 mt-2 d-block">
                       <form action="{{ route('logout_cliente') }}" method="POST">
                         @csrf

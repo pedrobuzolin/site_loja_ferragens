@@ -29,11 +29,11 @@
                                             </div>
                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
                                                 style="top: 10px; left: 10px;">{{ $secao->nomeSecao }}</div>
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom d-grid align-items-center produto-info">
                                                 <h4>{{ $linha->nome }}</h4>
                                                 <p>{{ $linha->descricaoProduto }}</p>
                                                 <div class="d-grid justify-content-between flex-lg-wrap produto">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ {{ number_format($linha->preco, '2', ',', '.') }}/
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ {{ number_format($linha->preco, '2', ',', '.') }} /
                                                         {{ $linha->unidadeMedida->unidadeMedida }}</p>
                                                     <input type="number" name="quantidade" id="quantidade"
                                                     class="form-control col-2 mt-2 mb-2"/>
