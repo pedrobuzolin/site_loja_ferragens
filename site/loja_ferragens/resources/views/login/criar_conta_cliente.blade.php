@@ -91,7 +91,7 @@
                                             aria-describedby="nome" readonly>
                                     </div>
                                     <button type="submit"
-                                        class="btn btn-primary w-100 py-8 fs-4 mb-4">CriarConta</button>
+                                        class="btn btn-primary w-100 py-8 fs-4 mb-4">Criar Conta</button>
                                     <a href="{{ route('login') }}" class="btn btn-danger w-100 py-8 fs-4 mb-4">Voltar</a>
                                 </form>
                             </div>
