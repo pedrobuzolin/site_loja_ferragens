@@ -30,7 +30,7 @@
                                                 </div>
                                                 <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
                                                     style="top: 10px; left: 10px;">{{ $linha->secao->nomeSecao }}</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom d-grid align-items-center produto-info">
                                                     <h4>{{ $linha->nome }}</h4>
                                                     <p>{{ $linha->descricaoProduto }}</p>
                                                     <div class="d-grid justify-content-between flex-lg-wrap produto">
