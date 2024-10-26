@@ -11,7 +11,6 @@ use App\Http\Controllers\VendasController;
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAdminController;
-use App\Http\Controllers\ComprasClienteController;
 use App\Http\Controllers\DashboardController;
 
 // INICIO ROTAS SITE
@@ -36,8 +35,7 @@ Route::get('/aumentar-quantidade/{id}', [CarrinhoController::class, 'aumentarQua
 Route::get('/diminuir-quantidade/{id}', [CarrinhoController::class, 'diminuirQuantidade'])->name('rm-qte');
 Route::get('/remover-produto/{id}', [CarrinhoController::class, 'removerProduto'])->name('rm-prod');
 Route::get('/itens-carrinho', [CarrinhoController::class, 'contarItens']);
-Route::get('/pagamento-sucesso', [CarrinhoController::class, 'pagamentoCerto'])->name('success');
-Route::get('/pagamento-falha', [CarrinhoController::class, 'pagamentoFalha'])->name('failure');
+
 // FIM ROTAS SITE
 
 // INICIO ROTAS PERFIL CLIENTE
@@ -45,12 +43,14 @@ Route::middleware([ClienteMiddleware::class])->group(function () {
     Route::get('/perfil',[DashboardController::class, 'index'])->name('home_cliente');
     
     Route::get('/pagamento', [CarrinhoController::class, 'pagamento'])->name('pagamento');
+    Route::get('/pagamento-sucesso', [CarrinhoController::class, 'pagamentoCerto'])->name('success');
+    Route::get('/pagamento-falha', [CarrinhoController::class, 'pagamentoFalha'])->name('failure');
 
     Route::post('/perfil/logout', [AuthController::class, 'logout'])->name('logout_cliente');
     
     Route::get('/perfil/conta', [ClientesController::class, 'buscarInfo'])->name('minha-conta');
     Route::post('/perfil/conta', [ClientesController::class, 'alterarCliente'])->name('conta_alte');
-    Route::get('/perfil/compras', [ComprasClienteController::class, 'index'])->name('compras');
+    Route::get('/perfil/compras', [VendasController::class, 'indexCliente'])->name('compras');
 });
 
 // FIM ROTAS PERFIL CLIENTE
@@ -107,7 +107,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/adm/clientes/excluir/{id}', [ClientesController::class, 'desativarCliente'])->name('cliente_del');
     
     //Vendas
-    Route::get('/adm/vendas', [VendasController::class, 'index'])->name('vendas');
+    Route::get('/adm/vendas', [VendasController::class, 'indexAdm'])->name('vendas');
 });
 
 // FIM ROTAS ADM
