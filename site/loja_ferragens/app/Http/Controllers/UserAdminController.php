@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UserAdminController extends Controller
 {
@@ -20,18 +21,30 @@ class UserAdminController extends Controller
         return view("login.criar_conta_adm");
     }
 
-    public function registrarAdministrador(Request $request)
+    protected function getInfoAdm(Request $request, $id = null)
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                $id ? Rule::unique('users')->ignore($id) : 'unique:users',
+            ],
+            'password' => $id ? 'nullable|string|min:8|confirmed' : 'required|string|min:8|confirmed',
         ]);
 
+        return $validatedData;
+    }
+
+    public function registrarAdministrador(Request $request)
+    {
+        $infoAdm = $this->getInfoAdm($request);
         $admin = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
+            'name' => $infoAdm['name'],
+            'email' => $infoAdm['email'],
+            'password' => Hash::make($infoAdm['password']),
             'access_level' => '0',
         ]);
 
@@ -50,18 +63,16 @@ class UserAdminController extends Controller
     {
         $validatedData = $request->validate([
             'id' => 'required|exists:users,id',
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'password' => 'nullable|string|min:8|confirmed',
         ]);
 
         $id = $validatedData['id'];
+        $infoAdm = $this->getInfoAdm($request, $id);
         $admin = User::find($id);
-        $admin->name = $validatedData['name'];
-        $admin->email = $validatedData['email'];
+        $admin->name = $infoAdm['name'];
+        $admin->email = $infoAdm['email'];
         
         if ($request->filled('password')) {
-            $admin->password = Hash::make($validatedData['password']);
+            $admin->password = Hash::make($infoAdm['password']);
         }
     
         $admin->save();

@@ -8,6 +8,7 @@ use App\Models\Enderecos;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class ClientesController extends Controller
 {
@@ -30,12 +31,18 @@ class ClientesController extends Controller
         return view("login.criar_conta_cliente");
     }
 
-    public function registrarCliente(Request $request)
+    protected function getInfoCliente(Request $request, $id = null)
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                $id ? Rule::unique('users')->ignore($id) : 'unique:users',
+            ],
+            'password' => $id ? 'nullable|string|min:8|confirmed' : 'required|string|min:8|confirmed',
             'nome_cliente' => 'required|string',
             'cpf' => 'required|string|min:11|max:11',
             'celular' => 'required|string|min:11|max:11',
@@ -47,31 +54,38 @@ class ClientesController extends Controller
             'cidade' => 'required|string',
             'uf' => 'required|string|min:2|max:2',
         ]);
-        
+
+        return $validatedData;
+    }
+
+    public function registrarCliente(Request $request)
+    {
+        $infoCliente = $this->getInfoCliente($request);
+
         $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
+            'name' => $infoCliente['name'],
+            'email' => $infoCliente['email'],
+            'password' => Hash::make($infoCliente['password']),
         ]);
     
         Auth::login($user);
     
         $cliente = Clientes::create([
             'id_user' => $user->id,
-            'nome_cliente' => $validatedData['nome_cliente'],
-            'cpf' => $validatedData['cpf'],
-            'celular' => $validatedData['celular'],
+            'nome_cliente' => $infoCliente['nome_cliente'],
+            'cpf' => $infoCliente['cpf'],
+            'celular' => $infoCliente['celular'],
         ]);
     
         $endereco = Enderecos::create([
             'id_cliente' => $cliente->id,
-            'cep' => $validatedData['cep'],
-            'rua' => $validatedData['rua'],
-            'numero' => $validatedData['numero'],
-            'complemento' => $validatedData['complemento'],
-            'bairro' => $validatedData['bairro'],
-            'cidade' => $validatedData['cidade'],
-            'uf' => $validatedData['uf'],
+            'cep' => $infoCliente['cep'],
+            'rua' => $infoCliente['rua'],
+            'numero' => $infoCliente['numero'],
+            'complemento' => $infoCliente['complemento'],
+            'bairro' => $infoCliente['bairro'],
+            'cidade' => $infoCliente['cidade'],
+            'uf' => $infoCliente['uf'],
         ]);
     
         return redirect()->route('login')->with('success', 'Registro concluído com sucesso!');
@@ -85,54 +99,44 @@ class ClientesController extends Controller
 
     public function alterarCliente(Request $request)
     {
+
         $validatedData = $request->validate([
             'idCliente' => 'required|exists:clientes,id',
             'idUsuario' => 'required|exists:users,id',
             'idEndereco' => 'required|exists:enderecos,id',
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'password' => 'nullable|string|min:8|confirmed',
-            'nome_cliente' => 'required|string',
-            'cpf' => 'required|string|min:11|max:11',
-            'celular' => 'required|string|min:11|max:11',
-            'cep' => 'required|string|min:8|max:8',
-            'rua' => 'required|string',
-            'numero' => 'required|string',
-            'complemento' => 'nullable|string',
-            'bairro' => 'required|string',
-            'cidade' => 'required|string',
-            'uf' => 'required|string|min:2|max:2',
         ]);
         
         $idUsuario = $validatedData['idUsuario'];
+        $infoCliente = $this->getInfoCliente($request, $idUsuario);
+
         $idCliente = $validatedData['idCliente'];
         $idEndereco = $validatedData['idEndereco'];
 
         $usuario = User::find($idUsuario);
-        $usuario->name = $validatedData['name'];
-        $usuario->email = $validatedData['email'];
+        $usuario->name = $infoCliente['name'];
+        $usuario->email = $infoCliente['email'];
         
         if ($request->filled('password')) {
-            $usuario->password = Hash::make($validatedData['password']);
+            $usuario->password = Hash::make($infoCliente['password']);
         } 
         $usuario->save();
     
         $cliente = Clientes::find($idCliente);
         $cliente->update([
-            'nome_cliente' => $validatedData['nome_cliente'],
-            'cpf' => $validatedData['cpf'],
-            'celular' => $validatedData['celular'],
+            'nome_cliente' => $infoCliente['nome_cliente'],
+            'cpf' => $infoCliente['cpf'],
+            'celular' => $infoCliente['celular'],
         ]);
     
         $endereco = Enderecos::find($idEndereco);
         $endereco->update([
-            'cep' => $validatedData['cep'],
-            'rua' => $validatedData['rua'],
-            'numero' => $validatedData['numero'],
-            'complemento' => $validatedData['complemento'],
-            'bairro' => $validatedData['bairro'],
-            'cidade' => $validatedData['cidade'],
-            'uf' => $validatedData['uf'],
+            'cep' => $infoCliente['cep'],
+            'rua' => $infoCliente['rua'],
+            'numero' => $infoCliente['numero'],
+            'complemento' => $infoCliente['complemento'],
+            'bairro' => $infoCliente['bairro'],
+            'cidade' => $infoCliente['cidade'],
+            'uf' => $infoCliente['uf'],
         ]);
 
         if (Auth::check()) {
