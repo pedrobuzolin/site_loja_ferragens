@@ -15,21 +15,29 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PagamentoController;
 
 // INICIO ROTAS SITE
+    // Home
 Route::get('/', [ProdutoController::class, 'exibirDestaques'])->name('home');
-
+    
+    // Seções
 Route::get('/secoes/{secao}', [ProdutoController::class, 'exibirProdutos'])->name('secoes_exibir');
+
+    //Pesquisa
 Route::post('/pesquisa', [ProdutoController::class, 'exibirPesquisa'])->name('pesquisa_exibir');
 
+    // Contato
 Route::get('/contato', function(){
     return view('site.contato');
 });
 
+    // Criar Conta Cliente
 Route::get('/criarconta', [ClientesController::class, 'formularioCadastroCliente'])->name('registrar');
 Route::post('/criarconta', [ClientesController::class, 'registrarCliente'])->name('add_cli');
 
+    // Login
 Route::get('/login', [AuthController::class, 'formularioLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('vld_login');
 
+    // Carrinho
 Route::get('/carrinho', [CarrinhoController::class, 'index']);
 Route::post('/adicionar-produto', [CarrinhoController::class, 'adicionarProduto'])->name('add-produto');
 Route::get('/aumentar-quantidade/{id}', [CarrinhoController::class, 'aumentarQuantidade'])->name('add-qte');
@@ -43,14 +51,18 @@ Route::get('/itens-carrinho', [CarrinhoController::class, 'contarItens']);
 Route::middleware([ClienteMiddleware::class])->group(function () {
     Route::get('/perfil',[DashboardController::class, 'index'])->name('home_cliente');
     
+    Route::post('/perfil/logout', [AuthController::class, 'logout'])->name('logout_cliente');
+    
+    // Pagamento
     Route::get('/pagamento', [PagamentoController::class, 'pagamento'])->name('pagamento');
     Route::get('/pagamento-sucesso', [PagamentoController::class, 'redirectPeloStatusPagamento'])->name('success');
     Route::get('/pagamento-falha', [PagamentoController::class, 'redirectPeloStatusPagamento'])->name('failure');
 
-    Route::post('/perfil/logout', [AuthController::class, 'logout'])->name('logout_cliente');
-    
+    // Conta
     Route::get('/perfil/conta', [ClientesController::class, 'buscarInfo'])->name('minha-conta');
     Route::post('/perfil/conta', [ClientesController::class, 'alterarCliente'])->name('conta_alte');
+    
+    // Compras
     Route::get('/perfil/compras', [VendasController::class, 'index'])->name('compras');
 });
 
@@ -89,7 +101,6 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/adm/unidades-medidas/alterar', [UnidadesMedidasController::class, 'executarAlteracao'])->name('uni_alt');;
     Route::get('/adm/unidades-medidas/excluir/{id}', [UnidadesMedidasController::class, 'excluir'])->name('uni_excluir');
     
-    
     //Produtos
     Route::get('/adm/produtos', [ProdutoController::class, 'index'])->name('produtos');
     Route::post('/adm/produtos', [ProdutoController::class, 'buscarProduto'])->name('produtos_busca');
@@ -98,7 +109,6 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/adm/produtos/alterar/{id}', [ProdutoController::class, 'alterar'])->name('produtos_alterar');
     Route::post('/adm/produtos/alterar', [ProdutoController::class, 'executarAlteracao'])->name('produtos_alt');;
     Route::get('/adm/produtos/excluir/{id}', [ProdutoController::class, 'excluir'])->name('produtos_excluir');
-    
     
     //Clientes
     Route::get('/adm/clientes', [ClientesController::class, 'index'])->name('clientes');
