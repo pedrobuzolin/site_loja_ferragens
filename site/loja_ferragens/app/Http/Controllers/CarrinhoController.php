@@ -9,7 +9,7 @@ use App\Models\Imagens;
 
 class CarrinhoController extends Controller
 {
-    function index()
+    public function index()
     {
         $carrinho = session()->get('carrinho', []);
 
@@ -24,7 +24,7 @@ class CarrinhoController extends Controller
         return view('site.carrinho', compact('carrinho', 'total'));
     }
 
-    function adicionarProduto(Request $request)
+    public function adicionarProduto(Request $request)
     {
         $produtoId = $request->id;
         $quantidade = $request->quantidade;
@@ -53,7 +53,7 @@ class CarrinhoController extends Controller
         return response()->json(['success' => true, 'carrinho' => $carrinho]);
     }
 
-    function aumentarQuantidade($id)
+    public function aumentarQuantidade($id)
     {
         $produtoId = $id;
         $carrinho = session()->get('carrinho', []);
@@ -67,7 +67,7 @@ class CarrinhoController extends Controller
         return redirect()->back();
     }
 
-    function diminuirQuantidade($id)
+    public function diminuirQuantidade($id)
     {
         $produtoId = $id;
         $carrinho = session()->get('carrinho', []);
@@ -83,7 +83,7 @@ class CarrinhoController extends Controller
         return redirect()->back();
     }
 
-    function removerProduto($id)
+    public function removerProduto($id)
     {
         $carrinho = session()->get('carrinho', []);
         $produtoId = $id;
@@ -94,7 +94,7 @@ class CarrinhoController extends Controller
         return redirect()->back();
     }
 
-    function contarItens()
+    public function contarItens()
     {
         $carrinho = session()->get('carrinho', []);
         $totalItens = count($carrinho);
