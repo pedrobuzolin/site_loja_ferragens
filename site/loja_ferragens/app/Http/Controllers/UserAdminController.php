@@ -46,8 +46,6 @@ class UserAdminController extends Controller
         return view("usuarios.alterar_adm", compact("usuario"));
     }    
     
-    
-
     public function alterarAdministrador(Request $request)
     {
         $validatedData = $request->validate([

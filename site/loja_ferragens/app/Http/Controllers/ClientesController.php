@@ -32,55 +32,49 @@ class ClientesController extends Controller
 
     public function registrarCliente(Request $request)
     {
-        try{
-            $validatedData = $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:8|confirmed',
-                'nome_cliente' => 'required|string',
-                'cpf' => 'required|string|min:11|max:11',
-                'celular' => 'required|string|min:11|max:11',
-                'cep' => 'required|string|min:8|max:8',
-                'rua' => 'required|string',
-                'numero' => 'required|string',
-                'complemento' => 'nullable|string',
-                'bairro' => 'required|string',
-                'cidade' => 'required|string',
-                'uf' => 'required|string|min:2|max:2',
-            ]);
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'nome_cliente' => 'required|string',
+            'cpf' => 'required|string|min:11|max:11',
+            'celular' => 'required|string|min:11|max:11',
+            'cep' => 'required|string|min:8|max:8',
+            'rua' => 'required|string',
+            'numero' => 'required|string',
+            'complemento' => 'nullable|string',
+            'bairro' => 'required|string',
+            'cidade' => 'required|string',
+            'uf' => 'required|string|min:2|max:2',
+        ]);
         
-            $user = User::create([
-                'name' => $validatedData['name'],
-                'email' => $validatedData['email'],
-                'password' => Hash::make($validatedData['password']),
-            ]);
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+        ]);
     
-            Auth::login($user);
+        Auth::login($user);
     
-            $cliente = Clientes::create([
-                'id_user' => $user->id,
-                'nome_cliente' => $validatedData['nome_cliente'],
-                'cpf' => $validatedData['cpf'],
-                'celular' => $validatedData['celular'],
-            ]);
+        $cliente = Clientes::create([
+            'id_user' => $user->id,
+            'nome_cliente' => $validatedData['nome_cliente'],
+            'cpf' => $validatedData['cpf'],
+            'celular' => $validatedData['celular'],
+        ]);
     
-            $endereco = Enderecos::create([
-                'id_cliente' => $cliente->id,
-                'cep' => $validatedData['cep'],
-                'rua' => $validatedData['rua'],
-                'numero' => $validatedData['numero'],
-                'complemento' => $validatedData['complemento'],
-                'bairro' => $validatedData['bairro'],
-                'cidade' => $validatedData['cidade'],
-                'uf' => $validatedData['uf'],
-            ]);
+        $endereco = Enderecos::create([
+            'id_cliente' => $cliente->id,
+            'cep' => $validatedData['cep'],
+            'rua' => $validatedData['rua'],
+            'numero' => $validatedData['numero'],
+            'complemento' => $validatedData['complemento'],
+            'bairro' => $validatedData['bairro'],
+            'cidade' => $validatedData['cidade'],
+            'uf' => $validatedData['uf'],
+        ]);
     
-            return redirect()->route('login')->with('success', 'Registro concluído com sucesso!');
-        }
-        catch (ValidationException $e) {
-            // Exibir os erros de validação
-            dd($e->errors());
-        }
+        return redirect()->route('login')->with('success', 'Registro concluído com sucesso!');
     }
 
     public function buscarAlteracaoCliente($id)
@@ -91,71 +85,64 @@ class ClientesController extends Controller
 
     public function alterarCliente(Request $request)
     {
-        try{
-            $validatedData = $request->validate([
-                'idCliente' => 'required|exists:clientes,id',
-                'idUsuario' => 'required|exists:users,id',
-                'idEndereco' => 'required|exists:enderecos,id',
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255',
-                'password' => 'nullable|string|min:8|confirmed',
-                'nome_cliente' => 'required|string',
-                'cpf' => 'required|string|min:11|max:11',
-                'celular' => 'required|string|min:11|max:11',
-                'cep' => 'required|string|min:8|max:8',
-                'rua' => 'required|string',
-                'numero' => 'required|string',
-                'complemento' => 'nullable|string',
-                'bairro' => 'required|string',
-                'cidade' => 'required|string',
-                'uf' => 'required|string|min:2|max:2',
-            ]);
+        $validatedData = $request->validate([
+            'idCliente' => 'required|exists:clientes,id',
+            'idUsuario' => 'required|exists:users,id',
+            'idEndereco' => 'required|exists:enderecos,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'password' => 'nullable|string|min:8|confirmed',
+            'nome_cliente' => 'required|string',
+            'cpf' => 'required|string|min:11|max:11',
+            'celular' => 'required|string|min:11|max:11',
+            'cep' => 'required|string|min:8|max:8',
+            'rua' => 'required|string',
+            'numero' => 'required|string',
+            'complemento' => 'nullable|string',
+            'bairro' => 'required|string',
+            'cidade' => 'required|string',
+            'uf' => 'required|string|min:2|max:2',
+        ]);
         
-            $idUsuario = $validatedData['idUsuario'];
-            $idCliente = $validatedData['idCliente'];
-            $idEndereco = $validatedData['idEndereco'];
+        $idUsuario = $validatedData['idUsuario'];
+        $idCliente = $validatedData['idCliente'];
+        $idEndereco = $validatedData['idEndereco'];
 
-            $usuario = User::find($idUsuario);
-            $usuario->name = $validatedData['name'];
-            $usuario->email = $validatedData['email'];
+        $usuario = User::find($idUsuario);
+        $usuario->name = $validatedData['name'];
+        $usuario->email = $validatedData['email'];
+        
+        if ($request->filled('password')) {
+            $usuario->password = Hash::make($validatedData['password']);
+        } 
+        $usuario->save();
+    
+        $cliente = Clientes::find($idCliente);
+        $cliente->update([
+            'nome_cliente' => $validatedData['nome_cliente'],
+            'cpf' => $validatedData['cpf'],
+            'celular' => $validatedData['celular'],
+        ]);
+    
+        $endereco = Enderecos::find($idEndereco);
+        $endereco->update([
+            'cep' => $validatedData['cep'],
+            'rua' => $validatedData['rua'],
+            'numero' => $validatedData['numero'],
+            'complemento' => $validatedData['complemento'],
+            'bairro' => $validatedData['bairro'],
+            'cidade' => $validatedData['cidade'],
+            'uf' => $validatedData['uf'],
+        ]);
+
+        if (Auth::check()) {
+            $user = Auth::user();
             
-            if ($request->filled('password')) {
-                $usuario->password = Hash::make($validatedData['password']);
-            } 
-            $usuario->save();
-    
-            $cliente = Clientes::find($idCliente);
-            $cliente->update([
-                'nome_cliente' => $validatedData['nome_cliente'],
-                'cpf' => $validatedData['cpf'],
-                'celular' => $validatedData['celular'],
-            ]);
-    
-            $endereco = Enderecos::find($idEndereco);
-            $endereco->update([
-                'cep' => $validatedData['cep'],
-                'rua' => $validatedData['rua'],
-                'numero' => $validatedData['numero'],
-                'complemento' => $validatedData['complemento'],
-                'bairro' => $validatedData['bairro'],
-                'cidade' => $validatedData['cidade'],
-                'uf' => $validatedData['uf'],
-            ]);
-
-            if (Auth::check()) {
-                $user = Auth::user();
-                
-                if ($user->access_level === '0') {
-                    return redirect()->route('clientes')->with('success', 'Registro concluído com sucesso!');
-                } elseif ($user->access_level === '1') {
-                    return redirect()->route('home_cliente')->with('success', 'Registro concluído com sucesso!');
-                }
+            if ($user->access_level === '0') {
+                return redirect()->route('clientes')->with('success', 'Registro concluído com sucesso!');
+            } elseif ($user->access_level === '1') {
+                return redirect()->route('home_cliente')->with('success', 'Registro concluído com sucesso!');
             }
-    
-        }
-        catch (ValidationException $e) {
-            // Exibir os erros de validação
-            dd($e->errors());
         }
     }
 

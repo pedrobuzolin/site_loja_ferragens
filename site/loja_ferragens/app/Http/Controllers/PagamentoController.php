@@ -52,6 +52,7 @@ class PagamentoController extends Controller
     public function pagamento()
     {
         $this->authenticate();
+
         $carrinho = session()->get('carrinho', []);
         $total_carrinho = session()->get('carrinho_total', 0);
         if(Auth::check()){
@@ -71,19 +72,17 @@ class PagamentoController extends Controller
         $venda->save();
         
         $id_venda = $venda->id;
-
-        
         
         $items = [];
         foreach ($carrinho as $produto) {
             $items[] = [
                 "id" => $produto['id'],
                 "title" => $produto['nome'],
-                "description" => "Descrição do produto",
                 "currency_id" => "BRL",
-                "quantity" => intval($produto['quantidade']),
+                "quantity" => floatval($produto['quantidade']),
                 "unit_price" => $produto['preco'],
             ];
+
             $item_venda = new ItensVendas();
             $item_venda->id_venda = $id_venda;
             $item_venda->id_produto = $produto['id'];
@@ -105,13 +104,13 @@ class PagamentoController extends Controller
             $preference = $client->create($request);
             $link = $preference->init_point;
             return redirect()->away($link);
-
-        } catch (MPApiException $error) {
+        } 
+        catch (MPApiException $error) {
             return null;
         }
     }
 
-    public function pagamentoCerto(Request $request)
+    public function redirectPeloStatusPagamento(Request $request)
     {
         $payment_id = $request->query('collection_id');
         $payment_type = $request->query('payment_type');
@@ -124,21 +123,11 @@ class PagamentoController extends Controller
         $venda->tipo_pagamento = $payment_type;
         $venda->save();
         session()->forget('carrinho');
-        return view('site.pagamento_sucesso');
-    }
-    public function pagamentoFalha(Request $request)
-    {
-        $payment_id = $request->query('collection_id');
-        $payment_type = $request->query('payment_type');
-        $status = $request->query('status');
-        $external_reference = $request->query('external_reference');
-
-        $venda = Vendas::where('id', $external_reference)->first();
-        $venda->status = $status;
-        $venda->id_pagamento_mercado_pago = $payment_id;
-        $venda->tipo_pagamento = $payment_type;
-        $venda->save();
-        session()->forget('carrinho');
-        return view('site.pagamento_falha');
+        if($status == 'approved'){
+            return view('site.pagamento_sucesso');
+        }
+        else{
+            return view('site.pagamento_falha');
+        }
     }
 }

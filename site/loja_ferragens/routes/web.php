@@ -44,14 +44,14 @@ Route::middleware([ClienteMiddleware::class])->group(function () {
     Route::get('/perfil',[DashboardController::class, 'index'])->name('home_cliente');
     
     Route::get('/pagamento', [PagamentoController::class, 'pagamento'])->name('pagamento');
-    Route::get('/pagamento-sucesso', [PagamentoController::class, 'pagamentoCerto'])->name('success');
-    Route::get('/pagamento-falha', [PagamentoController::class, 'pagamentoFalha'])->name('failure');
+    Route::get('/pagamento-sucesso', [PagamentoController::class, 'redirectPeloStatusPagamento'])->name('success');
+    Route::get('/pagamento-falha', [PagamentoController::class, 'redirectPeloStatusPagamento'])->name('failure');
 
     Route::post('/perfil/logout', [AuthController::class, 'logout'])->name('logout_cliente');
     
     Route::get('/perfil/conta', [ClientesController::class, 'buscarInfo'])->name('minha-conta');
     Route::post('/perfil/conta', [ClientesController::class, 'alterarCliente'])->name('conta_alte');
-    Route::get('/perfil/compras', [VendasController::class, 'indexCliente'])->name('compras');
+    Route::get('/perfil/compras', [VendasController::class, 'index'])->name('compras');
 });
 
 // FIM ROTAS PERFIL CLIENTE
@@ -108,7 +108,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/adm/clientes/excluir/{id}', [ClientesController::class, 'desativarCliente'])->name('cliente_del');
     
     //Vendas
-    Route::get('/adm/vendas', [VendasController::class, 'indexAdm'])->name('vendas');
+    Route::get('/adm/vendas', [VendasController::class, 'index'])->name('vendas');
 });
 
 // FIM ROTAS ADM
