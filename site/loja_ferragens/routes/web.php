@@ -12,6 +12,7 @@ use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PagamentoController;
 
 // INICIO ROTAS SITE
 Route::get('/', [ProdutoController::class, 'exibirDestaques'])->name('home');
@@ -42,9 +43,9 @@ Route::get('/itens-carrinho', [CarrinhoController::class, 'contarItens']);
 Route::middleware([ClienteMiddleware::class])->group(function () {
     Route::get('/perfil',[DashboardController::class, 'index'])->name('home_cliente');
     
-    Route::get('/pagamento', [CarrinhoController::class, 'pagamento'])->name('pagamento');
-    Route::get('/pagamento-sucesso', [CarrinhoController::class, 'pagamentoCerto'])->name('success');
-    Route::get('/pagamento-falha', [CarrinhoController::class, 'pagamentoFalha'])->name('failure');
+    Route::get('/pagamento', [PagamentoController::class, 'pagamento'])->name('pagamento');
+    Route::get('/pagamento-sucesso', [PagamentoController::class, 'pagamentoCerto'])->name('success');
+    Route::get('/pagamento-falha', [PagamentoController::class, 'pagamentoFalha'])->name('failure');
 
     Route::post('/perfil/logout', [AuthController::class, 'logout'])->name('logout_cliente');
     
