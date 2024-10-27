@@ -34,14 +34,19 @@ class UnidadesMedidasController extends Controller
         return view('unidadeMedidas.inserir');
     }
 
-    public function incluirUnidade(Request $request)
-    {
-        $request->validate([
+    protected function getInfoUnidade($request){
+        $validatedData = $request->validate([
             'unidadeMedida' => 'required|string|max:10',
             'uni_ativo' => 'required|boolean',
         ]);
 
-        UnidadeMedidas::create($request->all());
+        return $validatedData;
+    }
+
+    public function incluirUnidade(Request $request)
+    {
+        $infoUnidade = $this->getInfoUnidade($request);
+        UnidadeMedidas::create($infoUnidade);
         return redirect('/adm/unidades-medidas');
     }
 
@@ -55,15 +60,13 @@ class UnidadesMedidasController extends Controller
     {
         $request->validate([
             'id' => 'required|exists:unidade_medidas,id',
-            'unidadeMedida' => 'required|string|max:10',
-            'uni_ativo' => 'required|boolean',
         ]);
 
-        $infoUni = $request->except('id');
+        $infoUnidade = $this->getInfoUnidade($request);
         $idUnidade = $request['id'];
 
         $unidade_medidas = UnidadeMedidas::find($idUnidade);
-        $unidade_medidas->update($infoUni);
+        $unidade_medidas->update($infoUnidade);
 
         return redirect('/adm/unidades-medidas');
     }
