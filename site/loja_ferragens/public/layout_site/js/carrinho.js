@@ -1,20 +1,35 @@
 $(document).ready(function(){
-    $('.add_carrinho').click(function(){
-        var idProd = $(this).data('id-produto');
-        var quantidade = $(this).closest('.produto').find('input[name="quantidade"]').val();
+    $('.add_carrinho').on('click', function(event) {
+        event.preventDefault();
+        adicionarAoCarrinho($(this));
+    });
+
+    $('input[name="quantidade"]').on('keypress', function(event) {
+        if (event.which === 13) {
+            event.preventDefault();
+            var addCarrinhoBtn = $(this).closest('.produto').find('.add_carrinho');
+            adicionarAoCarrinho(addCarrinhoBtn);
+        }
+    });
+
+    function adicionarAoCarrinho(element) {
+        var idProd = element.data('id-produto');
+        var quantidade = element.closest('.produto').find('input[name="quantidade"]').val();
         var csrfToken = $('input[name="_token"]').val();
-        if(quantidade <= 0 || quantidade == "") {
+
+        if(quantidade <= 0 || quantidade === "") {
             alert('Por favor, insira uma quantidade válida.');
             return;
         }
 
         $.ajax({
-            url:'/adicionar-produto',
+            url: '/adicionar-produto',
             type: 'POST',
             data: {
                 _token: csrfToken,
                 id: idProd,
-                quantidade: quantidade},
+                quantidade: quantidade
+            },
             success: function(response){
                 if (response.success) {
                     atualizarNumeroCarrinho();
@@ -23,8 +38,8 @@ $(document).ready(function(){
                 }
             }
         });
-    });
-  
+    }
+
     function atualizarNumeroCarrinho() {
         $.ajax({
             url: '/itens-carrinho',
@@ -35,4 +50,4 @@ $(document).ready(function(){
         });
     }
     atualizarNumeroCarrinho();
-  });
+});
