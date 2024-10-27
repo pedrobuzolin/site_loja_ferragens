@@ -9,7 +9,7 @@
                 <div class="card w-100 mt-5 mb-5 text-center">
                     <div class="card-body">
                         <i class="fas fa-shopping-cart fa-10x"></i>
-                        <h5 class="card-title mt-2">Carrinho Vázio</h5>
+                        <h5 class="card-title mt-2">Carrinho Vazio</h5>
                     </div>
                 </div>
             @else
