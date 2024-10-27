@@ -33,6 +33,7 @@ $(document).ready(function(){
             success: function(response){
                 if (response.success) {
                     atualizarNumeroCarrinho();
+                    element.closest('.produto').find('input[name="quantidade"]').val('');
                 } else {
                     alert('Erro ao adicionar produto no carrinho.');
                 }
