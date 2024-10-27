@@ -8,7 +8,7 @@ use App\Models\Secao;
 use App\Models\UnidadeMedidas;
 use App\Models\Imagens;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Arr;
 
 class ProdutoController extends Controller
 {
@@ -42,9 +42,9 @@ class ProdutoController extends Controller
         return view('produtos.inserir', compact('secao', 'unidadeMedidas'));
     }
 
-    public function incluirProduto(Request $request)
+    protected function getInfoProduto($request, $id = null)
     {
-        $request->validate([
+        $validadedData = $request->validate([
             'idSecao' => 'required|exists:secao,id',
             'idUniMedida' => 'required|exists:unidade_medidas,id',
             'nome' => 'required|string|max:80',
@@ -53,14 +53,22 @@ class ProdutoController extends Controller
             'preco' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'produto_destaque' => 'required|boolean',
             'produto_ativo' => 'required|boolean',
-            'imagem' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'imagem' => $id ? 'nullable|image|mimes:jpeg,png,jpg|max:2048' : 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $infoProd = $request->except('imagem');
+        return $validadedData;
+    }
+
+    public function incluirProduto(Request $request)
+    {
+
+        $info = $this->getInfoProduto($request);
+        $img_file = $info['imagem'];
+        $infoProd = Arr::except($info, ['imagem']);
 
         $produto = Produto::create($infoProd);
 
-        $imagemUrl = Cloudinary::upload($request->file('imagem')->getRealPath(),[
+        $imagemUrl = Cloudinary::upload($img_file->getRealPath(),[
                 'folder' => 'img-prod-ed'
             ])->getSecurePath();
         
@@ -83,35 +91,32 @@ class ProdutoController extends Controller
     public function executarAlteracao(Request $request)
     {
 
-        $request->validate([
+        $validadedData = $request->validate([
             'id' => 'required|exists:produtos,id',
-            'idSecao' => 'required|exists:secao,id',
-            'idUniMedida' => 'required|exists:unidade_medidas,id',
-            'nome' => 'required|string|max:80',
-            'descricaoProduto' => 'required|string|max:255',
-            'estoque' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-            'preco' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-            'produto_destaque' => 'required|boolean',
-            'produto_ativo' => 'required|boolean',
-            'imagem' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $infoProd = $request->except(['id', 'imagem']);
+        $id = $validadedData['id'];
+        $info = $this->getInfoProduto($request, $id);
 
-        $id = $request['id'];
-        $produto = Produto::find($id);
-        
- 
-        if ($request->hasFile("imagem")) {
-            $novaImagem = Cloudinary::upload($request->file('imagem')->getRealPath(),[
+        if(isset($info['imagem'])){
+            $img_file = $info['imagem'];
+            $novaImagem = Cloudinary::upload($img_file->getRealPath(),[
                 'folder' => 'img-prod-ed'
             ])->getSecurePath();
 
-            $imagem = $produto->imagens->first();
-            $imagem->urlImagem = $novaImagem;
-            $imagem->save();
+            $infoProd = Arr::except($info, ['imagem']);
         }
+        else{
+            $infoProd = $info;
+        }
+        $produto = Produto::find($id);
+        
+        $imagem = $produto->imagens->first();
+        $imagem->urlImagem = $novaImagem;
+        $imagem->save();
+
         $produto->update($infoProd);
+
         return redirect('/adm/produtos');
     }
 
