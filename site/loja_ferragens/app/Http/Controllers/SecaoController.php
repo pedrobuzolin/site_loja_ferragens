@@ -34,14 +34,20 @@ class SecaoController extends Controller
         return view('secoes.inserir');
     }
 
-    public function incluirSecao(Request $request)
+    protected function getInfoSecao($request)
     {
-        $request->validate([
+        $validadedData = $request->validate([
             'nomeSecao' => 'required|string|max:30',
             'secao_ativo' => 'required|boolean',
         ]);
 
-        Secao::create($request->all());
+        return $validadedData;
+    }
+    public function incluirSecao(Request $request)
+    {
+
+        $infoSecao = $this->getInfoSecao($request);
+        Secao::create($infoSecao);
         return redirect('/adm/secoes');
     }
 
@@ -55,11 +61,9 @@ class SecaoController extends Controller
     {
         $request->validate([
             'id' => 'required|exists:secao,id',
-            'nomeSecao' => 'required|string|max:30',
-            'secao_ativo' => 'required|boolean',
         ]);
 
-        $infoSecao = $request->except('id');
+        $infoSecao = $this->getInfoSecao($request);
         $idSecao = $request['id'];
         $secao = Secao::find($idSecao);
         $secao->update($infoSecao);
