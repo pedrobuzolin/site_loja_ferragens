@@ -56,10 +56,10 @@
                                     @if($linha->imagens)
                                         <img src="{{$linha->imagens->first()->urlImagem}}" class="img-fluid w-50 rounded-top" alt="">
                                     @endif</td>
-                                <td class="text-center fw-medium">{{$linha->nome}}</td>
+                                <td class="text-start fw-medium">{{$linha->nome}}</td>
                                 <td class="text-center fw-medium">{{$linha->unidadeMedida->unidadeMedida}}</td>
                                 <td class="text-center fw-medium">{{$linha->estoque}}</td>
-                                <td class="text-center fw-medium">{{$linha->preco}}</td>
+                                <td class="text-center fw-medium">R$ {{number_format($linha->preco, '2', ',', '.')}}</td>
                                 <td class="text-center fw-medium">                            
                                     @if($linha->produto_destaque == 1)
                                         SIM
