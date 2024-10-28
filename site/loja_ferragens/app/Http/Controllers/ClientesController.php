@@ -19,6 +19,21 @@ class ClientesController extends Controller
         return view('clientes.index', compact('clientes'));
     }
 
+    public function buscarCliente(Request $request)
+    {
+        $ativo = $request->input("cliente_ativo");
+        $busca = $request->input("buscar");
+        if($ativo == "1"){
+            $clientes = Clientes::where("cliente_ativo", "1")->whereRaw("LOWER(nome_cliente) LIKE ?", ['%' . strtolower($busca) . '%'])->get();
+        }
+        else
+        {
+            $clientes = Clientes::all()->where("cliente_ativo", "0");
+        }
+
+        return view('clientes.index', compact('clientes'));
+    }
+
     public function buscarInfo(){
         if(Auth::check()){
             $id_user = Auth::id();
@@ -150,15 +165,20 @@ class ClientesController extends Controller
         }
     }
 
-    public function desativarCliente($id)
+    public function alterarStatus($id)
     {
         $cliente = Clientes::find($id);
-        $cliente->cliente_ativo = 0;
-        $cliente->save();
-
         $idUsuario = $cliente->id_user;
         $usuario = User::find($idUsuario);
-        $usuario->active = 0;
+        if($cliente->cliente_ativo == 0){
+            $cliente->cliente_ativo = 1;
+            $usuario->active = 1;
+        }
+        elseif($cliente->cliente_ativo == 1){
+            $cliente->cliente_ativo = 0;
+            $usuario->active = 0;
+        }
+        $cliente->save();
         $usuario->save();
 
         return redirect()->route("clientes");

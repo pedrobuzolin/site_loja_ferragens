@@ -112,10 +112,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     
     //Clientes
     Route::get('/adm/clientes', [ClientesController::class, 'index'])->name('clientes');
-    Route::post('/adm/clientes', [ClientesController::class, 'buscarUsuario'])->name('cliente_busca');
+    Route::post('/adm/clientes', [ClientesController::class, 'buscarCliente'])->name('cliente_busca');
     Route::get('/adm/clientes/alterar/{id}', [ClientesController::class, 'buscarAlteracaoCliente'])->name('cliente_alt');
     Route::post('/adm/clientes/alterar/', [ClientesController::class, 'alterarCliente'])->name('cliente_alte');
-    Route::get('/adm/clientes/excluir/{id}', [ClientesController::class, 'desativarCliente'])->name('cliente_del');
+    Route::get('/adm/clientes/excluir/{id}', [ClientesController::class, 'alterarStatus'])->name('cliente_del');
     
     //Vendas
     Route::get('/adm/vendas', [VendasController::class, 'index'])->name('vendas');
