@@ -21,6 +21,22 @@ class UserAdminController extends Controller
         return view("login.criar_conta_adm");
     }
 
+    public function buscarUsuario(Request $request)
+    {
+        $ativo = $request->input("active");
+        $busca = $request->input("buscar");
+        if($ativo == "1"){
+            $usuario = User::where("access_level", "0")->where("active", "1")->whereRaw("LOWER(name) LIKE ?", ['%' . strtolower($busca) . '%'])->get();
+        }
+        else
+        {
+            $usuario = User::all()->where("access_level", "0")->where("active", 0);
+        }
+
+        return view('usuarios.index', compact('usuario'));
+    }
+
+
     protected function getInfoAdm(Request $request, $id = null)
     {
         $validatedData = $request->validate([
@@ -81,10 +97,15 @@ class UserAdminController extends Controller
     }
     
    
-    public function desativarAdm($id)
+    public function alterarStatus($id)
     {
         $usuario = User::find($id);
-        $usuario->active = 0;
+        if($usuario->active == 0){
+            $usuario->active = 1;
+        }
+        elseif($usuario->active == 1){
+            $usuario->active = 0;
+        }
         $usuario->save();
         return redirect()->route("usuarios");
 

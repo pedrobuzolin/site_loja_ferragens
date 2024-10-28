@@ -76,12 +76,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     
     //Usuários
     Route::get('/adm/usuarios', [UserAdminController::class, 'index'])->name('usuarios');
-    Route::post('/adm/usuarios', [UserAdminController::class, 'buscarUsuario'])->name('user_busca');
+    Route::post('/adm/usuarios', [UserAdminController::class, 'buscarUsuario'])->name('usuarios_busca');
     Route::get('/adm/usuarios/novo', [UserAdminController::class, 'formularioCadastroAdministrador'])->name('user_novo');
     Route::post('/adm/usuarios/novo', [UserAdminController::class, 'registrarAdministrador'])->name('user_add');
     Route::get('/adm/usuarios/alterar/{id}', [UserAdminController::class, 'buscarAlteracaoAdm'])->name('user_alt');
     Route::post('/adm/usuarios/alterar/', [UserAdminController::class, 'alterarAdministrador'])->name('user_alte');;
-    Route::get('/adm/usuarios/excluir/{id}', [UserAdminController::class, 'desativarAdm'])->name('user_del');
+    Route::get('/adm/usuarios/excluir/{id}', [UserAdminController::class, 'alterarStatus'])->name('user_del');
     
     //Secao
     Route::get('/adm/secoes', [SecaoController::class, 'index'])->name('secoes');
