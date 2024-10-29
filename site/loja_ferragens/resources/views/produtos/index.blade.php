@@ -41,8 +41,7 @@
                                 <th scope="col" class="text-center ps-0">ID</th>
                                 <th scope="col" class="text-center">Foto</th>
                                 <th scope="col" class="text-center">Nome</th>
-                                <th scope="col" class="text-center">Unidade</th>
-                                <th scope="col" class="text-center">Estoque</th>
+                                <th scope="col" class="text-center">Seção</th>
                                 <th scope="col" class="text-center">Preço</th>
                                 <th scope="col" class="text-center">Destaque</th>
                                 <th scope="col" class="text-center">Opções</th>
@@ -57,8 +56,7 @@
                                         <img src="{{$linha->imagens->first()->urlImagem}}" class="img-fluid w-50 rounded-top" alt="">
                                     @endif</td>
                                 <td class="text-start fw-medium">{{$linha->nome}}</td>
-                                <td class="text-center fw-medium">{{$linha->unidadeMedida->unidadeMedida}}</td>
-                                <td class="text-center fw-medium">{{$linha->estoque}}</td>
+                                <td class="text-start fw-medium">{{$linha->secao->nomeSecao}}</td>
                                 <td class="text-center fw-medium">R$ {{number_format($linha->preco, '2', ',', '.')}}</td>
                                 <td class="text-center fw-medium">                            
                                     @if($linha->produto_destaque == 1)

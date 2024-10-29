@@ -97,6 +97,7 @@ class ProdutoController extends Controller
 
         $id = $validadedData['id'];
         $info = $this->getInfoProduto($request, $id);
+        $produto = Produto::find($id);
 
         if(isset($info['imagem'])){
             $img_file = $info['imagem'];
@@ -104,17 +105,16 @@ class ProdutoController extends Controller
                 'folder' => 'img-prod-ed'
             ])->getSecurePath();
 
+            $imagem = $produto->imagens->first();
+            $imagem->urlImagem = $novaImagem;
+            $imagem->save();
+
             $infoProd = Arr::except($info, ['imagem']);
         }
         else{
             $infoProd = $info;
         }
-        $produto = Produto::find($id);
         
-        $imagem = $produto->imagens->first();
-        $imagem->urlImagem = $novaImagem;
-        $imagem->save();
-
         $produto->update($infoProd);
 
         return redirect('/adm/produtos');
@@ -123,7 +123,12 @@ class ProdutoController extends Controller
     public function excluir($id)
     {
         $produto = Produto::where("id", $id)->first();
-        $produto->produto_ativo = 0;
+        if($produto->produto_ativo == 0){
+            $produto->produto_ativo = 1;
+        }
+        elseif($produto->produto_ativo == 1){
+            $produto->produto_ativo = 0;
+        }
         $produto->produto_destaque = 0;
         $produto->save();
         return redirect('/adm/produtos');

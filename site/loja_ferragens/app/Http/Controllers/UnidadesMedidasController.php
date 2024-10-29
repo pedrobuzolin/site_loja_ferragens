@@ -74,7 +74,12 @@ class UnidadesMedidasController extends Controller
     public function excluir($id)
     {
         $unidadeMedidas = UnidadeMedidas::where("id", $id)->first();
-        $unidadeMedidas->uni_ativo = 0;
+        if($unidadeMedidas->uni_ativo == 0){
+            $unidadeMedidas->uni_ativo = 1;
+        }
+        elseif($unidadeMedidas->uni_ativo == 1){
+            $unidadeMedidas->uni_ativo = 0;
+        }
         $unidadeMedidas->save();
         return redirect('/adm/unidades-medidas');
     }

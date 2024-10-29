@@ -74,7 +74,12 @@ class SecaoController extends Controller
     public function excluir($id)
     {
         $secao = Secao::find($id);
-        $secao->secao_ativo = 0;
+        if($secao->secao_ativo == 0){
+            $secao->secao_ativo = 1;
+        }
+        elseif($secao->secao_ativo == 1){
+            $secao->secao_ativo = 0;
+        }
         $secao->save();
         return redirect('/adm/secoes');
     }

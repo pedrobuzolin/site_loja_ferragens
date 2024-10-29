@@ -35,7 +35,7 @@
                     <div class="col-md-6">
                         <label for="idSecao" class="form-label">Seção</label>
                         <select name="idSecao" id="idSecao" class="form-select" required>
-                        <option selected value="{{$produto->idSecao}}">{{$produto->idSecao}} - {{$produto->secao->first()->nomeSecao}}</option>
+                        <option selected value="{{$produto->idSecao}}">{{$produto->idSecao}} - {{$produto->secao->nomeSecao}}</option>
                         @foreach ($secao as $sec)
                         <option value="{{$sec->id}}">{{$sec->id}} - {{$sec->nomeSecao}}</option>
                         @endforeach
